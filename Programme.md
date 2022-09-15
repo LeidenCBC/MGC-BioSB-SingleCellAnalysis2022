@@ -1,6 +1,6 @@
 ## Programme
 
-### Day 1 (Monday 10.10.2022)
+### Day 1 (Monday 10.10.2022) - LS&H Hub (9th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-09:45 |Introduction round #1 |  |
@@ -14,7 +14,7 @@
 |15:15-15:30 |_break_ | |
 |15:30-17:00 |Practical: [Quality control and normalization](session-qc-normalization/QC_Normalization.md) | TAs |
 
-### Day 2 (Tuesday 11.10.2022)
+### Day 2 (Tuesday 11.10.2022) - LS&H Hub (9th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-09:45 |Introduction round #1 |  |
@@ -28,7 +28,7 @@
 |15:45-16:00 |_break_ | |
 |16:00-17:00 |Lecture: [Spatial Transcriptomics](Lectures/Day3_Spatial_transcriptomics_Alemany.pdf) | Laura Heezen |
 
-### Day 3 (Wednesday 12.10.2022)
+### Day 3 (Wednesday 12.10.2022) - Auditorium (11th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-10:00 |Lecture: [Clustering and cell annotation](Lectures/Day3_clustering_cell_annotation_Michielsen.pdf) | Marcel Reinders |
@@ -41,7 +41,7 @@
 |15:45-16:00 |_break_ | |
 |16:00-17:00 |Practical: [Data integration](session-integration/Data_Integration.md) | TAs |
 
-### Day 4 (Thursday 13.10.2022)
+### Day 4 (Thursday 13.10.2022) - LS&H Hub (9th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-10:00 |Lecture: [Trajectory inference](Lectures/Day4_trajectory_inference_Charrout.pdf) | Mohammed Charrout |
@@ -54,7 +54,7 @@
 |15:45-16:00 |_break_ | |
 |16:00-17:00 |Open discussion, bring your own data | Ahmed Mahfouz, Susan Kloet, Miao-Ping Chien |
 
-### Day 5 (Friday 14.10.2022) - _Mini-symposium
+### Day 5 (Friday 14.10.2022) - Mini-symposium - BG Auditorium (ground floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-09:45 | TBA | TBA |
