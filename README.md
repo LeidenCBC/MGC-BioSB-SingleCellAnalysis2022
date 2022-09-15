@@ -10,9 +10,8 @@ The course features a mix of lectures and practicals, and you will have the oppo
 ### Location
 *This course will take place in-person only*
 
-Rotterdam Science Tower
-Marconistraat 16
-3029 AK Rotterdam
+Rotterdam Science Tower\
+Marconistraat 16, 3029 AK Rotterdam
 
 ### [Programme](Programme.md)
 
