@@ -39,7 +39,7 @@
 |14:00-14:15 |_break_ | |
 |14:15-15:45 |Practical: [Data integration](session-integration/Data_Integration.md) | TAs |
 |15:45-16:00 |_break_ | |
-|16:00-17:00 |Practical: [Data integration](session-integration/Spatial Transcriptomics.md) | TAs |
+|16:00-17:00 |Practical: [Data integration](session-integration/Data_Integration.md) | TAs |
 
 ### Day 4 (Thursday 13.10.2022) - LS&H Hub (9th floor)
 | When | What | Who |
