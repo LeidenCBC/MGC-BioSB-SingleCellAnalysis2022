@@ -48,7 +48,7 @@
 |10:00-10:15 |_break_ |  |
 |10:15-12:00 |Practical: [Trajectory inference](session-trajectories/session-trajectories.md) | TAs |
 |12:00-13:00 |_lunch_ |  |
-|13:00-14:00 |Lecture: [Differential expression analysis](Lectures/Day4_Differential_expression_Mahfouz.pdf) | Ahmed Mahfouz |
+|13:00-14:00 |Lecture: [Differential expression analysis](Lectures/Day4_Differential_expression_Mahfouz.pdf) | Gerard Bouland |
 |14:00-14:15 |_break_ | |
 |14:15-15:45 |Practical: [Differential expression analysis](session-differentialexpression/Differential_Expression.md) | TAs |
 |15:45-16:00 |_break_ | |

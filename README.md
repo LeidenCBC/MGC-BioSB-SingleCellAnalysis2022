@@ -31,6 +31,7 @@ For this course, we make use of RStudio Cloud. All you need for this is a browse
 - Mohammed Charrout (TU Delft/ LUMC)
 - Marcel Reinders (TU Delft)
 - Laura Heezen (LUMC)
+- Gerard Bouland (TU Delft/LUMC)
 
 ### Teaching Assistants
 - Qirong Mao (LUMC)
