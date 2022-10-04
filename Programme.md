@@ -12,7 +12,7 @@
 |14:00-14:15 |_break_| |
 |14:15-15:15 |Lecture: [Quality control and normalization](Lectures/Day1_QC_and_Normalization_Mahfouz.pdf) | Ahmed Mahfouz |
 |15:15-15:30 |_break_ | |
-|15:30-17:00 |Practical: [Quality control and normalization](session-qc-normalization/QC_Normalization.md) | TAs |
+|15:30-17:00 |Practical: [Quality control and normalization](session-qc-normalization/QC_Normalization.md) | TAs (Qirong, Gregory, Remco) |
 
 ### Day 2 (Tuesday 11.10.2022) - LS&H Hub (9th floor)
 | When | What | Who |
@@ -24,7 +24,7 @@
 |12:00-13:00 |_lunch_ |  |
 |13:00-14:00 |Lecture: [Dimensionality reduction](Lectures/Day2_Dimensionality_Reduction_Hollt.pdf) | Alexander Vieth |
 |14:00-14:15 |_break_ | |
-|14:15-15:45 |Practical: [Dimensionality reduction](session-dimensionalityreduction/Dimensionality_Reduction.md) | TAs |
+|14:15-15:45 |Practical: [Dimensionality reduction](session-dimensionalityreduction/Dimensionality_Reduction.md) | TAs (Mohammed, Gregory, Remco) |
 |15:45-16:00 |_break_ | |
 |16:00-17:00 |Lecture: [Spatial Transcriptomics](Lectures/Day3_Spatial_transcriptomics_Alemany.pdf) | Laura Heezen |
 
@@ -33,24 +33,24 @@
 | ------------- | ------------- | ------------- |
 |09:00-10:00 |Lecture: [Clustering and cell annotation](Lectures/Day3_clustering_cell_annotation_Michielsen.pdf) | Marcel Reinders |
 |10:00-10:15 |_break_ |  |
-|10:15-12:00 |Practical: [Clustering and cell annotation](session-clustering/Clustering.md) | TAs |
+|10:15-12:00 |Practical: [Clustering and cell annotation](session-clustering/Clustering.md) | TAs  (Qirong, Gregory, Remco) |
 |12:00-13:00 |_lunch_ |  |
 |13:00-14:00 |Lecture: [Data integration](Lectures/Day3_Data_Integration_Abdelaal.pdf) | Tamim Abdelaal |
 |14:00-14:15 |_break_ | |
-|14:15-15:45 |Practical: [Data integration](session-integration/Data_Integration.md) | TAs |
+|14:15-15:45 |Practical: [Data integration](session-integration/Data_Integration.md) | TAs (Qirong, Gregory, Remco) |
 |15:45-16:00 |_break_ | |
-|16:00-17:00 |Practical: [Spatial transcriptomics](session-integration/Spatial_Transcriptomics.md) | TAs |
+|16:00-17:00 |Practical: [Spatial transcriptomics](session-integration/Spatial_Transcriptomics.md) | TAs (Qirong, Gregory, Remco) |
 
 ### Day 4 (Thursday 13.10.2022) - LS&H Hub (9th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-10:00 |Lecture: [Trajectory inference](Lectures/Day4_trajectory_inference_Charrout.pdf) | Mohammed Charrout |
 |10:00-10:15 |_break_ |  |
-|10:15-12:00 |Practical: [Trajectory inference](session-trajectories/session-trajectories.md) | TAs |
+|10:15-12:00 |Practical: [Trajectory inference](session-trajectories/session-trajectories.md) | TAs (Mohammed, Gregory, Remco) |
 |12:00-13:00 |_lunch_ |  |
 |13:00-14:00 |Lecture: [Differential expression analysis](Lectures/Day4_Differential_expression_Mahfouz.pdf) | Gerard Bouland |
 |14:00-14:15 |_break_ | |
-|14:15-15:45 |Practical: [Differential expression analysis](session-differentialexpression/Differential_Expression.md) | TAs |
+|14:15-15:45 |Practical: [Differential expression analysis](session-differentialexpression/Differential_Expression.md) | TAs (Mohammed, Gregory, Remco) |
 |15:45-16:00 |_break_ | |
 |16:00-17:00 |Open discussion, bring your own data | Ahmed Mahfouz, Susan Kloet, Miao-Ping Chien |
 
