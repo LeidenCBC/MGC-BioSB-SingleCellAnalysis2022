@@ -1,0 +1,214 @@
+---
+title: "Data Integration"
+output: github_document
+---
+
+Created by: Ahmed Mahfouz
+
+Edited by: Mohammed Charrout, Lieke Michielsen
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Overview
+
+
+In this tutorial we will look at different ways of integrating multiple single cell RNA-seq datasets. We will explore two different methods to correct for batch effects across datasets. At the end of the session, we will also show how to transfer cell type labels from a reference dataset to a new dataset.
+
+
+## Datasets
+
+For this tutorial, we will use the 3 different PBMC datasets we also started the normalization practical with.
+
+
+Load required packages:
+
+```{r packages}
+# Clear the workspace
+rm(list=ls())
+
+suppressMessages(require(Seurat))
+suppressMessages(require(harmony))
+```
+
+## Seurat (anchors and CCA)
+
+First we will use the data integration method presented in [Comprehensive Integration of Single Cell Data](https://www.sciencedirect.com/science/article/pii/S0092867419305598?via%3Dihub).
+
+### Data preprocessing
+
+First, we load the three datasets and some celltype labels. 
+
+```{r load}
+pbmc_v3.1k <- readRDS('../session-clustering/pbmc3k.rds')
+v2.1k <- Read10X_h5("../session-qc-normalization/pbmc_1k_v2_filtered_feature_bc_matrix.h5")
+p3.1k <- Read10X_h5("../session-qc-normalization/pbmc_1k_protein_v3_filtered_feature_bc_matrix.h5")
+
+p3.1k <- p3.1k$`Gene Expression`
+
+pbmc_v2.1k <- CreateSeuratObject(v2.1k, project = "v2.1k")
+pbmc_p3.1k <- CreateSeuratObject(p3.1k, project = "p3.1k")
+
+labels_v2.1k = read.delim('celltypes_1k_v2.tsv', row.names = 1)
+labels_p3.1k = read.delim('celltypes_1k_protein.tsv', row.names = 1)
+
+pbmc_v2.1k <- AddMetaData(
+    object = pbmc_v2.1k,
+    metadata = labels_v2.1k)
+
+pbmc_p3.1k <- AddMetaData(
+    object = pbmc_p3.1k,
+    metadata = labels_p3.1k)
+
+
+```
+
+Create a Seurat object with all datasets.
+
+```{r create_Seurat}
+
+pbmc <- merge(pbmc_v2.1k, c(pbmc_v3.1k, pbmc_p3.1k), add.cell.ids=c("v2.1k","v3.1k","p3.1k"))
+pbmc$orig.ident[pbmc$orig.ident == 'PBMC'] <- 'v3.1k'
+
+```
+
+Let's first look at the datasets before applying any batch correction. We perform standard preprocessing (log-normalization), and identify variable features based on a variance stabilizing transformation (`"vst"`). Next, we scale the integrated data, run PCA, and visualize the results with UMAP. As you can see, the different batches do not overlap in the UMAP. 
+
+```{r norm_clust_raw, fig.width=12}
+# Normalize and find variable features
+pbmc <- NormalizeData(pbmc, verbose = FALSE)
+pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000, verbose = FALSE)
+    
+# Run the standard workflow for visualization and clustering
+pbmc <- ScaleData(pbmc, verbose = FALSE)
+pbmc <- RunPCA(pbmc, npcs = 30, verbose = FALSE)
+pbmc <- RunUMAP(pbmc, reduction = "pca", dims = 1:30, verbose = FALSE)
+p1 <- DimPlot(pbmc, reduction = "umap", group.by = "orig.ident")
+p2 <- DimPlot(pbmc, reduction = "umap", group.by = "celltype", label = TRUE, repel = TRUE) + 
+    NoLegend()
+p1 + p2
+```
+
+We split the combined object into a list, with each dataset as an element. We perform standard preprocessing (log-normalization), and identify variable features individually for each dataset based on a variance stabilizing transformation (`"vst"`).
+
+```{r norm_indiv}
+pbmc.list <- SplitObject(pbmc, split.by = "orig.ident")
+
+for (i in 1:length(pbmc.list)) {
+    pbmc.list[[i]] <- NormalizeData(pbmc.list[[i]], verbose = FALSE)
+    pbmc.list[[i]] <- FindVariableFeatures(pbmc.list[[i]], selection.method = "vst", nfeatures = 2000, 
+        verbose = FALSE)
+}
+
+### Select features that are repeatedly variable genes across the different dataset
+
+features <- SelectIntegrationFeatures(pbmc.list)
+
+```
+
+
+### Integration of three PBMC datasets
+
+We identify anchors using the `FindIntegrationAnchors` function, which takes a list of Seurat objects as input. 
+
+```{r anchors}
+pbmc.anchors <- FindIntegrationAnchors(pbmc.list, dims = 1:30)
+```
+
+We then pass these anchors to the `IntegrateData` function, which returns a Seurat object. 
+
+```{r integrate}
+pbmc.integrated <- IntegrateData(pbmc.anchors)
+```
+
+After running `IntegrateData`, the `Seurat` object will contain a new `Assay` with the integrated (or ‘batch-corrected’) expression matrix. Note that the original (uncorrected values) are still stored in the object in the “RNA” assay, so you can switch back and forth.
+
+We can then use this new integrated matrix for downstream analysis and visualization. Here we scale the integrated data, run PCA, and visualize the results with UMAP. The integrated datasets cluster by cell type, instead of by technology.
+
+```{r clust_integrated, fig.width=12}
+# switch to integrated assay. The variable features of this assay are automatically set during
+# IntegrateData
+DefaultAssay(pbmc.integrated) <- "integrated"
+
+# Run the standard workflow for visualization and clustering
+pbmc.integrated <- ScaleData(pbmc.integrated, verbose = FALSE)
+pbmc.integrated <- RunPCA(pbmc.integrated, npcs = 30, verbose = FALSE)
+pbmc.integrated <- RunUMAP(pbmc.integrated, reduction = "pca", dims = 1:30, verbose = FALSE)
+p1 <- DimPlot(pbmc.integrated, reduction = "umap", group.by = "orig.ident")
+p2 <- DimPlot(pbmc.integrated, reduction = "umap", group.by = "celltype", label = TRUE, repel = TRUE) + 
+    NoLegend()
+p1+p2
+```
+
+
+## Harmony
+
+An alternative approach to integrate single cell RNA-seq data is using [Harmony](https://doi.org/10.1038/s41592-019-0619-0). The simplest way to run Harmony, is to directly run it on a Seurat object.
+
+```{r harmony, fig.width=5}
+
+pbmc <- RunHarmony(pbmc, 'orig.ident', plot_convergence = TRUE)
+
+```
+
+Let's visualize these results. We will again plot a UMAP, but instead of running UMAP on the PCA embedding, we will run it on the embedding returned by Harmony.
+
+```{r plot_harmony, fig.width=12}
+pbmc <- RunUMAP(pbmc, reduction = "harmony", dims = 1:20, verbose = FALSE)
+p1 <- DimPlot(pbmc, reduction = "umap", group.by = "orig.ident")
+p2 <- DimPlot(pbmc, reduction = "umap", group.by = "celltype", label = TRUE, repel = TRUE) + 
+    NoLegend()
+p1+p2
+```
+
+# Projecting labels from a reference atlas
+For some well studied tissues, there exists already a reference atlas. Cell type labels from this reference atlas can then be easily propagated to your own new dataset. As discussed in the lecture, clustering can be quite subjective and time-consuming. With these automatic approaches, you can overcome these issues. 
+
+An example of an automatic method is Azimuth. When using Azimuth for small datasets, it is easiest to use the [webportal](https://azimuth.hubmapconsortium.org/).  Here, you can choose which reference atlas you want to use, upload your own dataset, choose the normalization procedure, and transfer the labels. You can try this yourself with the three PBMC datasets. The best way to annotate them, is to upload the raw counts separately to the portal.
+
+For larger datasets it is easier to download the reference atlas itself and annotate them. The code below shows how to do it. This code will take a long time or is impossible to run on a normal desktop or Rstudio cloud, but is very convenient for an HPC cluster.
+
+First we [download](https://atlas.fredhutch.org/data/nygc/multimodal/pbmc_multimodal.h5seurat) the reference dataset.
+
+Next, we load the reference and align one of the pbmc datasets.
+
+```{r alignref, fig.width=12, eval=FALSE}
+
+reference <- LoadH5Seurat("pbmc_multimodal.h5seurat")
+
+pbmc_v3.1k <- SCTransform(pbmc_v3.1k, verbose=FALSE)
+
+anchors <- FindTransferAnchors(reference=reference,
+                               query = pbmc_v3.1k, 
+                               normalization.method='SCT',
+                               reference.reduction='spca',
+                               dims=1:50
+                               )
+
+pbmc_v3.1k <- MapQuery(
+  anchorset = anchors,
+  query = pbmc_v3.1k,
+  reference = reference,
+  refdata = list(
+    celltype.l1 = "celltype.l1",
+    celltype.l2 = "celltype.l2",
+    predicted_ADT = "ADT"
+  ),
+  reference.reduction = "spca", 
+  reduction.model = "wnn.umap"
+)
+
+p1 = DimPlot(pbmc_v3.1k, reduction = "ref.umap", group.by = "predicted.celltype.l1", label = TRUE, label.size = 3, repel = TRUE) + NoLegend()
+p2 = DimPlot(pbmc_v3.1k, reduction = "ref.umap", group.by = "predicted.celltype.l2", label = TRUE, label.size = 3 ,repel = TRUE) + NoLegend()
+p1 + p2
+
+
+```
+
+
+### Session info
+
+```{r}
+sessionInfo()
+```
