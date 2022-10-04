@@ -17,7 +17,7 @@
 ### Day 2 (Tuesday 11.10.2022) - LS&H Hub (9th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
-|09:00-09:45 |Introduction round #1 |  |
+|09:00-09:45 |Introduction round #2 |  |
 |09:45-10:45 |Lecture: [Experimental design & sample preparation](Lectures/Day2_Sample_prep_and_experimental_design_Kloet.pdf) | Susan Kloet |
 |10:45-11:00 |_break_ |  |
 |11:00-12:00 |Lecture: [Single-cell multi-omics](Lectures/Day2_Single-cell_multi_omics_Chien.pdf) | Miao-Ping Chien |
