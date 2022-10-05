@@ -1,0 +1,309 @@
+---
+title: "Spatial Transcriptomics"
+output:
+  html_document:
+    df_print: paged
+---
+
+Created by: Qirong Mao
+
+Edited by: Mohammed Charrout
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=9, fig.height=6) 
+```
+
+# Overview
+
+In this tutorial we will focus on how to analysis the spatial transcriptomics data. In this exercise we will cover the following steps:
+
+* Quality control
+* Normalization
+* Dimentional reduction and clustering
+* Identifying spatially variable genes
+* Integretion with single-cell RNA-seq data
+* Working with multiple slices
+
+This exercise is based on the [Seurat Vignette](https://satijalab.org/seurat/articles/spatial_vignette.html) of analysing spatial transcriptomics.
+
+
+## Datasets
+
+For this tutorial we will use the dataset from the sagittal mouse brain slices genarated by Visium, including the anterior section and the matched posterior section. First we will focus of matched anterior and posterior slides from the sagittal mouse brain. generated Visium platform. First we will focus on the anterior section.
+
+Load required packages:
+
+```{r packages}
+suppressMessages(require(Seurat))
+suppressMessages(require(SeuratData))
+suppressMessages(require(ggplot2))
+suppressMessages(require(patchwork))
+suppressMessages(require(dplyr))
+```
+
+Load the dataset:
+
+```{r loading dataset}
+brain <- LoadData("stxBrain", type = "anterior1")
+brain
+```
+
+Now we have the assay called "Spatial" instead of "RNA".
+
+## Quality control
+
+Similar to scRNA-seq analysis pipeline, we can use statistics like numbers of count, numbers of feature, the percentage of mitochondria and hemoglobin gene for QC. Please notify that: in the single-cell data, the unit of these statistics is per single cell. In the Visium data, the unit is per spot. Each spot contains UMI of 5-20 cells instead of single-cells.  
+
+
+```{r violin plot, fig.height=10, fig.width=10}
+
+# Calculate the percentage of mitochondrial and hemoglobin genes within each spot
+brain <- PercentageFeatureSet(brain, "^mt-", col.name = "percent_mito")
+brain <- PercentageFeatureSet(brain, "^Hb.*-", col.name = "percent_hb")
+# Plot the QC-features as violin plots
+VlnPlot(brain, features = c("nCount_Spatial", "nFeature_Spatial", "percent_mito",
+    "percent_hb"), pt.size = 0.1, ncol = 2) + NoLegend()
+
+```
+
+We can also visualize these statistics on the tissue slide.
+
+```{r visualize tissue slide, fig.width=8, fig.height=8}
+
+SpatialFeaturePlot(brain, features = c("nCount_Spatial", "nFeature_Spatial", "percent_mito","percent_hb"))
+
+```
+
+Then we filter out spots with low UMI count/gene number and high proportion of mitochondrial/hemoglobin genes. You can also choose different filtering criteria by your own based on your judgement. 
+
+```{r filtering, warning=FALSE}
+brain = brain[, brain$nCount_Spatial > 2500 & brain$nFeature_Spatial > 500 & 
+brain$percent_mito < 25 & brain$percent_hb < 10]
+```
+
+Now let us check the data again after filtering:
+
+```{r visualize tissue slide after QC, fig.width=8, fig.height=8}
+
+SpatialFeaturePlot(brain, features = c("nCount_Spatial", "nFeature_Spatial", "percent_mito","percent_hb"))
+
+```
+
+## Normalization: SCTransform
+
+In this tutorial, we use SCTransform method for data normalization. SCTransform builds regularized negative binomial models of gene expression in order to account for technical effects while preserving biological variance. For more details, please check the [paper](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1874-1).
+
+```{r SCTransform}
+
+brain <- SCTransform(brain, assay = "Spatial", verbose = FALSE)
+
+```
+
+
+We can try plot gene expression onto the tissue section
+
+```{r plotting genes, fig.width=6, fig.height=6}
+
+SpatialFeaturePlot(brain, features = c("Hpca", "Ttr"))
+
+```
+
+## Dimentionality reduction and clustering
+
+After data normalization, we can run dimensionality reduction and clustering the expression data using the same workflow for analyzing scRNA-seq:
+
+```{r dimensionality reduction and clustering,warning=FALSE}
+
+#Perform hierarchical clustering using complete linkage & euclidean distance
+
+brain <- RunPCA(brain, assay = "SCT", verbose = FALSE)
+brain <- FindNeighbors(brain, reduction = "pca", dims = 1:30)
+brain <- FindClusters(brain, verbose = FALSE)
+brain <- RunUMAP(brain, reduction = "pca", dims = 1:30)
+
+```
+
+We can visualize the clustering results on UMAP or onto the tissue section:
+
+```{r hierarchical_eucledian_complete_pcaplot, echo=FALSE, fig.height=8, fig.width=14, message=FALSE, warning=FALSE}
+
+p1= DimPlot(brain, reduction = "umap", label = TRUE)
+p2= SpatialDimPlot(brain, label = TRUE, label.size = 3)
+p1+p2
+
+```
+
+We can also plot each cluster separately for better discrimination
+
+
+```{r kmeans, fig.height=8, fig.width=8, warning=FALSE}
+
+SpatialDimPlot(brain, cells.highlight = CellsByIdentities(object = brain, idents = c(2, 4, 5, 1,
+    0, 10)), facet.highlight = TRUE, ncol = 3)
+
+
+```
+
+### Discussion
+
+Here, we focus on clustering depends on the expression data only. But for spatial transcriptomics, we can also make use of extra spatial information and/or tissue slice H&E image. We listed other clustering methods for spatial transcriptomics:
+
+* [BayesSpace](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8763026/)
+* [SpaGCN](https://www.nature.com/articles/s41592-021-01255-8)
+
+
+
+## Spatially variable genes
+
+Seurat offers two workflows to identify molecular features that correlate with spatial location within a tissue, so called spatially variable genes. In this tutorial, we perform differential expression based on pre-annotated anatomical regions within the tissue, which may be determined either from unsupervised clustering or prior knowledge. This strategy works will in this case, as the clusters above exhibit clear spatial restriction.
+
+
+```{r detecting SVG, warning=FALSE}
+
+de_markers <- FindMarkers(brain, ident.1 = 1, ident.2 = 0)
+SpatialFeaturePlot(object = brain, features = rownames(de_markers)[0:6], alpha = c(0.1, 1), ncol = 3)
+
+```
+
+If you interested more in detecting spatially variable genes, you can alsoc check other methods like [SpatialDE](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6350895/) and [SPARK](https://www.nature.com/articles/s41592-019-0701-7) .
+
+## Deconvolution
+
+Spots from the visium assay will encompass the expression profiles of multiple cells. For the growing list of systems where scRNA-seq data is available, users may be interested to ‘deconvolute’ each of the spatial voxels to predict the underlying composition of cell types. In this tutorial,we use a reference scRNA-seq dataset of ~14,000 adult mouse cortical cell taxonomy from the Allen Institute, generated with the SMART-Seq2 protocol.
+
+
+Since the single cell reference data for deconvolution is from the cortex only, we need to subset the cortex region from the spatial data first and then renormalized the subset data:
+
+```{r Subset cortex from ST, warning=FALSE}
+
+# Subset the cortical cells based on cluster labels
+cortex <- subset(brain, idents = c(1, 2, 4, 6, 5))
+# Further subset the cortical cells based on exact positions
+cortex <- subset(cortex, anterior1_imagerow > 400 | anterior1_imagecol < 150, invert = TRUE)
+cortex <- subset(cortex, anterior1_imagerow > 275 & anterior1_imagecol > 370, invert = TRUE)
+cortex <- subset(cortex, anterior1_imagerow > 250 & anterior1_imagecol > 440, invert = TRUE)
+
+```
+
+```{r plot the deconvolution results, fig.height=10, fig.width=10, warning=FALSE}
+
+cortex <- SCTransform(cortex, assay = "Spatial", verbose = FALSE) %>%
+    RunPCA(verbose = FALSE)
+p1 <- SpatialDimPlot(cortex, crop = TRUE, label = TRUE)
+p2 <- SpatialDimPlot(cortex, crop = FALSE, label = TRUE, pt.size.factor = 1, label.size = 3)
+p1 + p2
+
+```
+
+
+After processing of spatial data, then we load the pre-processed single-cell reference data of brain cortex:
+
+```{r loading reference, warning=FALSE}
+
+allen_reference <- readRDS("D://Data/allen_reference_processed.rds")
+
+```
+
+We can check the annotation stored in the single cell data in UMAP:
+
+```{r UMAP for reference, fig.height=10, fig.width=10, warning=FALSE}
+
+DimPlot(allen_reference, group.by = "subclass", label = TRUE)
+
+```
+
+In this tutorial, we apply the ‘anchor’-based integration workflow, that enables the probabilistic transfer of annotations from a reference to a query set.
+
+
+```{r Intergrating ST and single-cell, warning=FALSE}
+anchors <- FindTransferAnchors(reference = allen_reference, query = cortex, normalization.method = "SCT")
+predictions.assay <- TransferData(anchorset = anchors, refdata = allen_reference$subclass, prediction.assay = TRUE,
+    weight.reduction = cortex[["pca"]], dims = 1:30)
+cortex[["predictions"]] <- predictions.assay
+rm(allen_reference)
+```
+
+Now we get prediction scores for each spot for each class. Of particular interest in the frontal cortex region are the laminar excitatory neurons. Here we can distinguish between distinct sequential layers of these neuronal subtypes, for example:
+
+```{r deconvolution results, echo=FALSE, fig.height=8, fig.width=8, warning=FALSE}
+DefaultAssay(cortex) <- "predictions"
+SpatialFeaturePlot(cortex, features = c("L2/3 IT", "L5 IT"), pt.size.factor = 1.6, ncol = 2, crop = TRUE)
+```
+
+## Working with multiple slices
+
+Until now we are only focusing on the anterior section of the brain, now we load the other half of the brain and perform the same quality control and normalization 
+
+```{r loading the 2nd section, echo=FALSE, warning=FALSE}
+
+## Loading the 2nd slide
+brain2 <- LoadData("stxBrain", type = "posterior1")
+## Filtering the data based on QC-features
+brain2 <- PercentageFeatureSet(brain2, "^mt-", col.name = "percent_mito")
+brain2 <- PercentageFeatureSet(brain2, "^Hb.*-", col.name = "percent_hb")
+brain2 = brain2[, brain2$nCount_Spatial > 2500 & brain2$nFeature_Spatial > 500 & brain2$percent_mito < 25 & brain2$percent_hb < 15]
+## Using the same SCTransform for the 2nd sction normalization
+brain2 <- SCTransform(brain2, assay = "Spatial", verbose = FALSE)
+
+```
+
+Then we can merge multiple slice in the same Seurat object:
+
+```{r merging, echo=FALSE, warning=FALSE}
+
+brain.merge <- merge(brain, brain2)
+
+```
+
+Now plot the gene expression onto the merge tissue sections
+
+```{r Gene expression onto merge sections, echo=FALSE, fig.height=10, fig.width=10, warning=FALSE}
+
+SpatialFeaturePlot(brain.merge, features = c("Hpca", "Plp1"))
+
+```
+
+Running the joint dimensional reduction and clustering on the underlying RNA expression data.
+
+
+```{r join reduction and clustering, echo=FALSE, warning=FALSE}
+
+DefaultAssay(brain.merge) <- "SCT"
+VariableFeatures(brain.merge) <- c(VariableFeatures(brain), VariableFeatures(brain2))
+brain.merge <- RunPCA(brain.merge, verbose = FALSE)
+brain.merge <- FindNeighbors(brain.merge, dims = 1:30)
+brain.merge <- FindClusters(brain.merge, verbose = FALSE)
+brain.merge <- RunUMAP(brain.merge, dims = 1:30)
+
+```
+
+
+Now we can visualize the join dimensionality reduction and clustering results in UMAP plot and onto the tissue slides: 
+
+```{r joint UMAP, echo=FALSE, fig.height=8, fig.width=14, warning=FALSE}
+
+DimPlot(brain.merge, reduction = "umap", group.by = c("ident", "orig.ident"))
+
+```
+
+
+```{r Clustering onto merge sections, echo=FALSE, fig.height=10, fig.width=10, warning=FALSE}
+
+SpatialDimPlot(brain.merge,label=TRUE)
+
+```
+
+You can check if the clustering labels here match the reference brain region labels in [Allen Brain atlas](http://atlas.brain-map.org/atlas?atlas=2&plate=100883900#atlas=2&plate=100883818&resolution=10.47&x=8709.999694824219&y=4040&zoom=-3)
+
+
+### Session info
+
+```{r}
+sessionInfo()
+```
+
+
+
+
+
