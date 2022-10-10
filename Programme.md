@@ -6,7 +6,7 @@
 |09:00-09:45 |Introduction round #1 |  |
 |09:45-10:45 |Lecture: [Overview of different single-cell platforms and assays](Lectures/Day1_Overview_single_cell_sequencing_Kloet.pdf) | Susan Kloet |
 |10:45-11:00 |_break_ |  |
-|11:00-12:00 |Lecture: [scRNA-seq platforms](Lectures/Day1_scRNA-seq_platforms_Chien.pdf) | Miao-Ping Chien |
+|11:00-12:00 |Lecture: [scRNA-seq platforms](Lectures/Day1_scRNAseq platforms_MPChien_2022.pdf) | Miao-Ping Chien |
 |12:00-13:00 |_lunch_ |  |
 |13:00-14:00 |Lecture: [Preprocessing](Lectures/Day1_Preprocessing_Menafra.pdf) | Roberta Menafra |
 |14:00-14:15 |_break_| |
