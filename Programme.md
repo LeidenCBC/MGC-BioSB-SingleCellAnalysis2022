@@ -8,7 +8,7 @@
 |10:45-11:00 |_break_ |  |
 |11:00-12:00 |Lecture: [scRNA-seq platforms](Lectures/Day1_scRNAseq_platforms_MPChien_2022.pdf) | Miao-Ping Chien |
 |12:00-13:00 |_lunch_ |  |
-|13:00-14:00 |Lecture: [Preprocessing](Lectures/Day1_Preprocessing_Menafra.pdf) | Roberta Menafra |
+|13:00-14:00 |Lecture: [Preprocessing](Lectures/Day1_SingleCell_pre-process_Menafra_2022.pdf) | Roberta Menafra |
 |14:00-14:15 |_break_| |
 |14:15-15:15 |Lecture: [Quality control and normalization](Lectures/Day1_QC_and_Normalization_Mahfouz.pdf) | Ahmed Mahfouz |
 |15:15-15:30 |_break_ | |
