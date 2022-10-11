@@ -22,7 +22,7 @@
 |10:45-11:00 |_break_ |  |
 |11:00-12:00 |Lecture: [Single-cell multi-omics](Lectures/Day2_Single-cell_multi_omics_Chien.pdf) | Miao-Ping Chien |
 |12:00-13:00 |_lunch_ |  |
-|13:00-14:00 |Lecture: [Dimensionality reduction](Lectures/Day2_Dimensionality_Reduction_Hollt.pdf) | Alexander Vieth |
+|13:00-14:00 |Lecture: [Dimensionality reduction](Lectures/Day2_dimensionality_reduction_Vieth.pdf) | Alexander Vieth |
 |14:00-14:15 |_break_ | |
 |14:15-15:45 |Practical: [Dimensionality reduction](session-dimensionalityreduction/Dimensionality_Reduction.md) | TAs (Mohammed, Gregory) |
 |15:45-16:00 |_break_ | |
