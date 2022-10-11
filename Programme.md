@@ -57,11 +57,10 @@
 ### Day 5 (Friday 14.10.2022) - Mini-symposium - BG Auditorium (ground floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
-|09:00-09:45 | TBA | TBA |
-|09:45-10:30 | TBA | TBA |
-|10:30-11:00 |_break_ | |
-|11:00-11:45 | TBA | TBA |
-|11:45-12:30 | TBA | TBA |
-
+|09:00-09:45 | Machine learning for predicting cell type and response to perturbation from single-cell multi-omics | Stavros Makrodimitris (EMC) |
+|10:00-10:45 | Exploring the tissue inflammatory landscape in chronic inflammation and cancer | Yvonne Vercoulen	(UMCU) |
+|11:00-11:45 | Single-cell immune profiling reveals novel thymus-seeding populations, T cell commitment, and multi-lineage development in the human thymus | Martijn Cordes	(LUMC) |
+|12:00-12:45 | UMCU	Cell typing in the complex molecular landscape of the midbrain | Onur Basak (UMCU) |
+|12:45- |_lunch_ |  |
 
 ## [Back to main](README.md)
