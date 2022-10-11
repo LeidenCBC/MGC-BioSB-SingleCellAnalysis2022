@@ -58,8 +58,11 @@
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-09:45 | Machine learning for predicting cell type and response to perturbation from single-cell multi-omics | Stavros Makrodimitris (EMC) |
+|09:45-10:00 |_break_ |  |
 |10:00-10:45 | Exploring the tissue inflammatory landscape in chronic inflammation and cancer | Yvonne Vercoulen	(UMCU) |
+|10:45-11:00 |_break_ |  |
 |11:00-11:45 | Single-cell immune profiling reveals novel thymus-seeding populations, T cell commitment, and multi-lineage development in the human thymus | Martijn Cordes	(LUMC) |
+|11:45-12:00 |_break_ |  |
 |12:00-12:45 | UMCU	Cell typing in the complex molecular landscape of the midbrain | Onur Basak (UMCU) |
 |12:45- |_lunch_ |  |
 
