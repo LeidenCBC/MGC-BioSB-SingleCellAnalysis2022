@@ -141,26 +141,26 @@ brain <- FindClusters(brain, verbose = FALSE)
 brain <- RunUMAP(brain, reduction = "pca", dims = 1:30)
 ```
 
-    ## 14:23:54 UMAP embedding parameters a = 0.9922 b = 1.112
+    ## 19:19:04 UMAP embedding parameters a = 0.9922 b = 1.112
 
-    ## 14:23:54 Read 2560 rows and found 30 numeric columns
+    ## 19:19:04 Read 2560 rows and found 30 numeric columns
 
-    ## 14:23:54 Using Annoy for neighbor search, n_neighbors = 30
+    ## 19:19:04 Using Annoy for neighbor search, n_neighbors = 30
 
-    ## 14:23:54 Building Annoy index with metric = cosine, n_trees = 50
+    ## 19:19:04 Building Annoy index with metric = cosine, n_trees = 50
 
     ## 0%   10   20   30   40   50   60   70   80   90   100%
 
     ## [----|----|----|----|----|----|----|----|----|----|
 
     ## **************************************************|
-    ## 14:23:54 Writing NN index file to temp file /tmp/RtmpWB6bbq/file22e14b32344
-    ## 14:23:54 Searching Annoy index using 1 thread, search_k = 3000
-    ## 14:23:54 Annoy recall = 100%
-    ## 14:23:55 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
-    ## 14:23:55 Initializing from normalized Laplacian + noise (using irlba)
-    ## 14:23:55 Commencing optimization for 500 epochs, with 100028 positive edges
-    ## 14:23:58 Optimization finished
+    ## 19:19:04 Writing NN index file to temp file /tmp/Rtmpr1o7yV/file2ac769e0c22
+    ## 19:19:04 Searching Annoy index using 1 thread, search_k = 3000
+    ## 19:19:05 Annoy recall = 100%
+    ## 19:19:05 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+    ## 19:19:06 Initializing from normalized Laplacian + noise (using irlba)
+    ## 19:19:06 Commencing optimization for 500 epochs, with 100028 positive edges
+    ## 19:19:09 Optimization finished
 
 We can visualize the clustering results on UMAP or onto the tissue
 section:
@@ -257,6 +257,7 @@ After processing of spatial data, then we load the pre-processed
 single-cell reference data of brain cortex:
 
 ``` r
+## For downloading the reference dataset: https://www.dropbox.com/s/cuowvm4vrf65pvq/allen_cortex.rds?dl=1
 allen_reference <- readRDS("./allen_reference_processed.rds")
 ```
 
@@ -330,26 +331,26 @@ RNA expression data.
 
     ## Computing SNN
 
-    ## 14:25:47 UMAP embedding parameters a = 0.9922 b = 1.112
+    ## 19:21:07 UMAP embedding parameters a = 0.9922 b = 1.112
 
-    ## 14:25:47 Read 5659 rows and found 30 numeric columns
+    ## 19:21:07 Read 5659 rows and found 30 numeric columns
 
-    ## 14:25:47 Using Annoy for neighbor search, n_neighbors = 30
+    ## 19:21:07 Using Annoy for neighbor search, n_neighbors = 30
 
-    ## 14:25:47 Building Annoy index with metric = cosine, n_trees = 50
+    ## 19:21:07 Building Annoy index with metric = cosine, n_trees = 50
 
     ## 0%   10   20   30   40   50   60   70   80   90   100%
 
     ## [----|----|----|----|----|----|----|----|----|----|
 
     ## **************************************************|
-    ## 14:25:47 Writing NN index file to temp file /tmp/RtmpWB6bbq/file22e175a4f3c
-    ## 14:25:47 Searching Annoy index using 1 thread, search_k = 3000
-    ## 14:25:49 Annoy recall = 100%
-    ## 14:25:49 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
-    ## 14:25:50 Initializing from normalized Laplacian + noise (using irlba)
-    ## 14:25:50 Commencing optimization for 500 epochs, with 225762 positive edges
-    ## 14:25:56 Optimization finished
+    ## 19:21:08 Writing NN index file to temp file /tmp/Rtmpr1o7yV/file2ac473879de
+    ## 19:21:08 Searching Annoy index using 1 thread, search_k = 3000
+    ## 19:21:10 Annoy recall = 100%
+    ## 19:21:10 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+    ## 19:21:11 Initializing from normalized Laplacian + noise (using irlba)
+    ## 19:21:11 Commencing optimization for 500 epochs, with 225762 positive edges
+    ## 19:21:17 Optimization finished
 
 Now we can visualize the join dimensionality reduction and clustering
 results in UMAP plot and onto the tissue slides:
@@ -416,7 +417,7 @@ sessionInfo()
     ##  [46] nlme_3.1-157          progressr_0.11.0      lmtest_0.9-40        
     ##  [49] spatstat.random_2.2-0 xfun_0.33             stringr_1.4.1        
     ##  [52] globals_0.16.1        mime_0.12             miniUI_0.1.1.1       
-    ##  [55] lifecycle_1.0.2       irlba_2.3.5.1         goftest_1.2-3        
+    ##  [55] lifecycle_1.0.3       irlba_2.3.5.1         goftest_1.2-3        
     ##  [58] future_1.28.0         MASS_7.3-57           zoo_1.8-11           
     ##  [61] scales_1.2.1          spatstat.core_2.4-4   promises_1.2.0.1     
     ##  [64] spatstat.utils_2.3-1  parallel_4.2.1        RColorBrewer_1.1-3   
@@ -426,13 +427,13 @@ sessionInfo()
     ##  [76] matrixStats_0.62.0    evaluate_0.16         lattice_0.20-45      
     ##  [79] ROCR_1.0-11           purrr_0.3.5           tensor_1.5           
     ##  [82] labeling_0.4.2        htmlwidgets_1.5.4     cowplot_1.1.1        
-    ##  [85] tidyselect_1.1.2      parallelly_1.32.1     RcppAnnoy_0.0.19     
+    ##  [85] tidyselect_1.2.0      parallelly_1.32.1     RcppAnnoy_0.0.19     
     ##  [88] plyr_1.8.7            magrittr_2.0.3        R6_2.5.1             
     ##  [91] generics_0.1.3        DBI_1.1.3             withr_2.5.0          
     ##  [94] mgcv_1.8-40           pillar_1.8.1          fitdistrplus_1.1-8   
     ##  [97] survival_3.3-1        abind_1.4-5           tibble_3.1.8         
     ## [100] future.apply_1.9.1    crayon_1.5.2          KernSmooth_2.23-20   
-    ## [103] utf8_1.2.2            spatstat.geom_2.4-0   plotly_4.10.0        
+    ## [103] utf8_1.2.2            spatstat.geom_2.4-0   plotly_4.10.0.9001   
     ## [106] rmarkdown_2.16        grid_4.2.1            data.table_1.14.2    
     ## [109] digest_0.6.29         xtable_1.8-4          tidyr_1.2.1          
     ## [112] httpuv_1.6.6          munsell_0.5.0         viridisLite_0.4.1

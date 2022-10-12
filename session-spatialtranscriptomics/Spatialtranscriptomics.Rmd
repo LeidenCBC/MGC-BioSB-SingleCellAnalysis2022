@@ -198,7 +198,7 @@ p1 + p2
 After processing of spatial data, then we load the pre-processed single-cell reference data of brain cortex:
 
 ```{r loading reference, warning=FALSE}
-
+## For downloading the reference dataset: https://www.dropbox.com/s/cuowvm4vrf65pvq/allen_cortex.rds?dl=1
 allen_reference <- readRDS("./allen_reference_processed.rds")
 
 ```
