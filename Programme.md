@@ -41,7 +41,7 @@
 |15:45-16:00 |_break_ | |
 |16:00-17:00 |Practical: [Spatial transcriptomics](session-integration/Spatial_Transcriptomics.md) | TAs (Qirong, Remco) |
 
-### Day 4 (Thursday 13.10.2022) - LS&H Hub (9th floor)
+### Day 4 (Thursday 13.10.2022) - Auditorium (11th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
 |09:00-10:00 |Lecture: [Trajectory inference](Lectures/Day4_trajectory_inference_Charrout.pdf) | Mohammed Charrout |
