@@ -31,7 +31,7 @@
 ### Day 3 (Wednesday 12.10.2022) - Auditorium (11th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
-|09:00-10:00 |Lecture: [Clustering and cell annotation](Lectures/Day3_clustering_cell_annotation_Michielsen.pdf) | Marcel Reinders |
+|09:00-10:00 |Lecture: [Clustering and cell annotation](Lectures/Day3_clustering_cell_annotation_Reinders.pdf) | Marcel Reinders |
 |10:00-10:15 |_break_ |  |
 |10:15-12:00 |Practical: [Clustering and cell annotation](session-clustering/Clustering.md) | TAs  (Qirong, Remco) |
 |12:00-13:00 |_lunch_ |  |
