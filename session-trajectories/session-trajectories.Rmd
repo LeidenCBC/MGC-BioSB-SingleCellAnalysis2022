@@ -92,7 +92,7 @@ The genes IDs in the counts matrix are annotated using the biomaRt Bioconductor 
 
 ```{r}
 mart <- biomaRt::useDataset("mmusculus_gene_ensembl", biomaRt::useMart("ensembl"))
-genes_table <- biomaRt::getBM(attributes=c("ensembl_gene_id", "external_gene_name"), values=rownames(counts), mart=mart)
+genes_table <- biomaRt::getBM(attributes=c("ensembl_gene_id", "external_gene_name"), values=rownames(counts), mart=mart,useCache = FALSE)
 rownames(genes_table) <- genes_table$ensembl_gene_id
 head(genes_table)
 ```
@@ -199,7 +199,7 @@ table(pData(cds)$State, pData(cds)$celltype)[,"ESLAM"]
 State 1 defines the root in the model as it contains all 10 of the E-Slam-expressing cells. Note that Monocle might return a different state number containing these cells. Simply pass the correct state number to the `orderCells` function:
 
 ```{r, warning=FALSE}
-cds <- orderCells(cds, root_state = 1)
+cds <- orderCells(cds, root_state = 2)
 ```
 
 The pseudotime is now defined by the distance to the root:

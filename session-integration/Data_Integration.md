@@ -26,6 +26,7 @@ rm(list=ls())
 
 suppressMessages(require(Seurat))
 suppressMessages(require(harmony))
+## Please use devtools::install_github("eddelbuettel/harmony",force = TRUE) to install harmony if it showed error on "Runharmony" function on your own device.
 ```
 
 ## Seurat (anchors and CCA)
@@ -41,17 +42,8 @@ First, we load the three datasets and some celltype labels.
 ``` r
 pbmc_v3.1k <- readRDS('../session-clustering/pbmc3k.rds')
 v2.1k <- Read10X_h5("../session-qc-normalization/pbmc_1k_v2_filtered_feature_bc_matrix.h5")
-```
-
-    ## Warning in sparseMatrix(i = indices[] + 1, p = indptr[], x = as.numeric(x =
-    ## counts[]), : 'giveCsparse' has been deprecated; setting 'repr = "T"' for you
-
-``` r
 p3.1k <- Read10X_h5("../session-qc-normalization/pbmc_1k_protein_v3_filtered_feature_bc_matrix.h5")
 ```
-
-    ## Warning in sparseMatrix(i = indices[] + 1, p = indptr[], x = as.numeric(x =
-    ## counts[]), : 'giveCsparse' has been deprecated; setting 'repr = "T"' for you
 
     ## Genome matrix has multiple modalities, returning a list of matrices for this genome
 
@@ -153,25 +145,11 @@ pbmc.anchors <- FindIntegrationAnchors(pbmc.list, dims = 1:30)
 
     ## Finding anchors
 
-    ##  Found 3031 anchors
+    ##  Found 3028 anchors
 
     ## Filtering anchors
 
-    ##  Retained 2717 anchors
-
-    ## Running CCA
-
-    ## Merging objects
-
-    ## Finding neighborhoods
-
-    ## Finding anchors
-
-    ##  Found 2540 anchors
-
-    ## Filtering anchors
-
-    ##  Retained 2143 anchors
+    ##  Retained 2711 anchors
 
     ## Running CCA
 
@@ -185,7 +163,21 @@ pbmc.anchors <- FindIntegrationAnchors(pbmc.list, dims = 1:30)
 
     ## Filtering anchors
 
-    ##  Retained 2182 anchors
+    ##  Retained 2151 anchors
+
+    ## Running CCA
+
+    ## Merging objects
+
+    ## Finding neighborhoods
+
+    ## Finding anchors
+
+    ##  Found 2537 anchors
+
+    ## Filtering anchors
+
+    ##  Retained 2162 anchors
 
 We then pass these anchors to the `IntegrateData` function, which
 returns a Seurat object.
@@ -248,7 +240,7 @@ An alternative approach to integrate single cell RNA-seq data is using
 to run Harmony, is to directly run it on a Seurat object.
 
 ``` r
-pbmc <- RunHarmony(pbmc, 'orig.ident', plot_convergence = TRUE)
+pbmc <- RunHarmony(pbmc, "orig.ident", plot_convergence = TRUE)
 ```
 
     ## Harmony 1/10
@@ -346,66 +338,70 @@ p2 = DimPlot(pbmc_v3.1k, reduction = "ref.umap", group.by = "predicted.celltype.
 p1 + p2
 ```
 
-Finally, we visualize the results.
-
 ### Session info
 
 ``` r
 sessionInfo()
 ```
 
-    ## R version 4.0.5 (2021-03-31)
-    ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 18363)
+    ## R version 4.2.1 (2022-06-23)
+    ## Platform: x86_64-pc-linux-gnu (64-bit)
+    ## Running under: Ubuntu 20.04.5 LTS
     ## 
     ## Matrix products: default
+    ## BLAS:   /usr/lib/x86_64-linux-gnu/atlas/libblas.so.3.10.3
+    ## LAPACK: /usr/lib/x86_64-linux-gnu/atlas/liblapack.so.3.10.3
     ## 
     ## locale:
-    ## [1] LC_COLLATE=Dutch_Netherlands.1252  LC_CTYPE=Dutch_Netherlands.1252   
-    ## [3] LC_MONETARY=Dutch_Netherlands.1252 LC_NUMERIC=C                      
-    ## [5] LC_TIME=Dutch_Netherlands.1252    
+    ##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+    ##  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+    ##  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+    ## [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
     ## 
     ## attached base packages:
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] harmony_1.0        Rcpp_1.0.7         SeuratObject_4.0.2 Seurat_4.0.4      
+    ## [1] harmony_0.1.0      Rcpp_1.0.9         sp_1.5-0           SeuratObject_4.1.2
+    ## [5] Seurat_4.2.0      
     ## 
     ## loaded via a namespace (and not attached):
-    ##   [1] Rtsne_0.15            colorspace_2.0-2      deldir_0.2-10        
-    ##   [4] ellipsis_0.3.2        ggridges_0.5.3        spatstat.data_2.1-0  
-    ##   [7] leiden_0.3.9          listenv_0.8.0         farver_2.1.0         
-    ##  [10] ggrepel_0.9.1         bit64_4.0.5           RSpectra_0.16-0      
-    ##  [13] fansi_0.5.0           codetools_0.2-18      splines_4.0.5        
-    ##  [16] knitr_1.36            polyclip_1.10-0       jsonlite_1.7.2       
-    ##  [19] ica_1.0-2             cluster_2.1.1         png_0.1-7            
-    ##  [22] uwot_0.1.10           shiny_1.7.0           sctransform_0.3.2    
-    ##  [25] spatstat.sparse_2.0-0 compiler_4.0.5        httr_1.4.2           
-    ##  [28] Matrix_1.3-4          fastmap_1.1.0         lazyeval_0.2.2       
-    ##  [31] later_1.3.0           htmltools_0.5.2       tools_4.0.5          
-    ##  [34] igraph_1.2.6          gtable_0.3.0          glue_1.4.2           
-    ##  [37] RANN_2.6.1            reshape2_1.4.4        dplyr_1.0.7          
-    ##  [40] scattermore_0.7       vctrs_0.3.8           nlme_3.1-152         
-    ##  [43] lmtest_0.9-38         xfun_0.26             stringr_1.4.0        
-    ##  [46] globals_0.14.0        mime_0.12             miniUI_0.1.1.1       
-    ##  [49] lifecycle_1.0.1       irlba_2.3.3           goftest_1.2-2        
-    ##  [52] future_1.22.1         MASS_7.3-54           zoo_1.8-9            
-    ##  [55] scales_1.1.1          spatstat.core_2.3-0   promises_1.2.0.1     
-    ##  [58] spatstat.utils_2.2-0  parallel_4.0.5        RColorBrewer_1.1-2   
-    ##  [61] yaml_2.2.1            reticulate_1.22       pbapply_1.5-0        
-    ##  [64] gridExtra_2.3         ggplot2_3.3.5         rpart_4.1-15         
-    ##  [67] stringi_1.7.4         highr_0.9             rlang_0.4.11         
-    ##  [70] pkgconfig_2.0.3       matrixStats_0.61.0    evaluate_0.14        
-    ##  [73] lattice_0.20-41       ROCR_1.0-11           purrr_0.3.4          
-    ##  [76] tensor_1.5            patchwork_1.1.1       htmlwidgets_1.5.4    
-    ##  [79] labeling_0.4.2        cowplot_1.1.1         bit_4.0.4            
-    ##  [82] tidyselect_1.1.1      parallelly_1.28.1     RcppAnnoy_0.0.19     
-    ##  [85] plyr_1.8.6            magrittr_2.0.1        R6_2.5.1             
-    ##  [88] generics_0.1.0        pillar_1.6.3          mgcv_1.8-34          
-    ##  [91] fitdistrplus_1.1-6    survival_3.2-10       abind_1.4-5          
-    ##  [94] tibble_3.1.4          future.apply_1.8.1    crayon_1.4.1         
-    ##  [97] hdf5r_1.3.4           KernSmooth_2.23-18    utf8_1.2.2           
-    ## [100] spatstat.geom_2.2-2   plotly_4.9.4.1        rmarkdown_2.11       
-    ## [103] grid_4.0.5            data.table_1.14.2     digest_0.6.28        
-    ## [106] xtable_1.8-4          tidyr_1.1.4           httpuv_1.6.3         
-    ## [109] munsell_0.5.0         viridisLite_0.4.0
+    ##   [1] Rtsne_0.16            colorspace_2.0-3      deldir_1.0-6         
+    ##   [4] ellipsis_0.3.2        ggridges_0.5.4        rstudioapi_0.14      
+    ##   [7] spatstat.data_2.2-0   farver_2.1.1          leiden_0.4.3         
+    ##  [10] listenv_0.8.0         bit64_4.0.5           ggrepel_0.9.1        
+    ##  [13] fansi_1.0.3           codetools_0.2-18      splines_4.2.1        
+    ##  [16] knitr_1.40            polyclip_1.10-0       jsonlite_1.8.2       
+    ##  [19] ica_1.0-3             cluster_2.1.3         png_0.1-7            
+    ##  [22] rgeos_0.5-9           uwot_0.1.14           shiny_1.7.2          
+    ##  [25] sctransform_0.3.5     spatstat.sparse_2.1-1 compiler_4.2.1       
+    ##  [28] httr_1.4.4            assertthat_0.2.1      Matrix_1.5-0         
+    ##  [31] fastmap_1.1.0         lazyeval_0.2.2        cli_3.4.1            
+    ##  [34] later_1.3.0           htmltools_0.5.3       tools_4.2.1          
+    ##  [37] igraph_1.3.5          gtable_0.3.1          glue_1.6.2           
+    ##  [40] RANN_2.6.1            reshape2_1.4.4        dplyr_1.0.10         
+    ##  [43] scattermore_0.8       vctrs_0.4.2           nlme_3.1-157         
+    ##  [46] progressr_0.11.0      lmtest_0.9-40         spatstat.random_2.2-0
+    ##  [49] xfun_0.33             stringr_1.4.1         globals_0.16.1       
+    ##  [52] mime_0.12             miniUI_0.1.1.1        lifecycle_1.0.3      
+    ##  [55] irlba_2.3.5.1         goftest_1.2-3         future_1.28.0        
+    ##  [58] MASS_7.3-57           zoo_1.8-11            scales_1.2.1         
+    ##  [61] spatstat.core_2.4-4   promises_1.2.0.1      spatstat.utils_2.3-1 
+    ##  [64] parallel_4.2.1        RColorBrewer_1.1-3    yaml_2.3.5           
+    ##  [67] reticulate_1.26       pbapply_1.5-0         gridExtra_2.3        
+    ##  [70] ggplot2_3.3.6         rpart_4.1.16          stringi_1.7.8        
+    ##  [73] highr_0.9             rlang_1.0.6           pkgconfig_2.0.3      
+    ##  [76] matrixStats_0.62.0    evaluate_0.16         lattice_0.20-45      
+    ##  [79] ROCR_1.0-11           purrr_0.3.5           tensor_1.5           
+    ##  [82] labeling_0.4.2        patchwork_1.1.2       htmlwidgets_1.5.4    
+    ##  [85] bit_4.0.4             cowplot_1.1.1         tidyselect_1.2.0     
+    ##  [88] parallelly_1.32.1     RcppAnnoy_0.0.19      plyr_1.8.7           
+    ##  [91] magrittr_2.0.3        R6_2.5.1              generics_0.1.3       
+    ##  [94] DBI_1.1.3             mgcv_1.8-40           pillar_1.8.1         
+    ##  [97] fitdistrplus_1.1-8    survival_3.3-1        abind_1.4-5          
+    ## [100] tibble_3.1.8          future.apply_1.9.1    hdf5r_1.3.7          
+    ## [103] KernSmooth_2.23-20    utf8_1.2.2            spatstat.geom_2.4-0  
+    ## [106] plotly_4.10.0.9001    rmarkdown_2.16        grid_4.2.1           
+    ## [109] data.table_1.14.2     digest_0.6.29         xtable_1.8-4         
+    ## [112] tidyr_1.2.1           httpuv_1.6.6          munsell_0.5.0        
+    ## [115] viridisLite_0.4.1

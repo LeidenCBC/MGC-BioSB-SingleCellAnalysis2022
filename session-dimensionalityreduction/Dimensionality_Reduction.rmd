@@ -14,7 +14,7 @@ set.seed(32546)
 
 # Dimensionality Reduction & Visualization
 
-In this tutorial we will look at different ways to visualize single cell RNA-seq datasets using dimensionality reduction. We will apply the Principal Component Analysis (PCA), t-distributed Stochastic Neighbor Embedding (t-SNE) and Uniform Manifold Approximation and Projection (UMAP) algorithms. Further, we will look at different ways to plot the dimensionality reduced data and augment them with additional information, such as gene expression or meta-information.
+In this tutorial we will look at different ways to visualize single celhttps://0a5681ff63cf4da19c61ae6d3d88b674.app.rstudio.cloud/graphics/ce6dfe91-200f-4e6d-a39b-e7db96824545.pngl RNA-seq datasets using dimensionality reduction. We will apply the Principal Component Analysis (PCA), t-distributed Stochastic Neighbor Embedding (t-SNE) and Uniform Manifold Approximation and Projection (UMAP) algorithms. Further, we will look at different ways to plot the dimensionality reduced data and augment them with additional information, such as gene expression or meta-information.
 
 ## Datasets
 
@@ -338,7 +338,7 @@ HoverLocator(plot = interactivePlot, information = FetchData(pbmc, vars = c("cel
 
 ## Saving the data
 
-Save the Seurat object with the new embeddings for future use downstream. 
+Save the Seurat object with the new embeddings for futurremotes::install_github('plotly/plotly.R')e use downstream. 
 
 ```{r, export}
 saveRDS(pbmc, file = "pbmc3k.rds")

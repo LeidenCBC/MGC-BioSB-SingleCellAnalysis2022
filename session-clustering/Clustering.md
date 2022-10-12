@@ -158,7 +158,7 @@ p1+p2
 
 The clustering algorithm of Seurat itself is based on graph based
 clustering. The output of the clustering, will be saved automatically in
-the metadata as ‘seurat\_clusters’. As explained in the lecture, the
+the metadata as ‘seurat_clusters’. As explained in the lecture, the
 resolution parameter is related to the number of clusters. You can play
 around with this parameters to see how it influences the results.
 
@@ -236,57 +236,62 @@ saveRDS(pbmc, file = "pbmc3k.rds")
 sessionInfo()
 ```
 
-    ## R version 4.0.5 (2021-03-31)
-    ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 18363)
+    ## R version 4.2.1 (2022-06-23)
+    ## Platform: x86_64-pc-linux-gnu (64-bit)
+    ## Running under: Ubuntu 20.04.5 LTS
     ## 
     ## Matrix products: default
+    ## BLAS:   /usr/lib/x86_64-linux-gnu/atlas/libblas.so.3.10.3
+    ## LAPACK: /usr/lib/x86_64-linux-gnu/atlas/liblapack.so.3.10.3
     ## 
     ## locale:
-    ## [1] LC_COLLATE=Dutch_Netherlands.1252  LC_CTYPE=Dutch_Netherlands.1252   
-    ## [3] LC_MONETARY=Dutch_Netherlands.1252 LC_NUMERIC=C                      
-    ## [5] LC_TIME=Dutch_Netherlands.1252    
+    ##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+    ##  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+    ##  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+    ## [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
     ## 
     ## attached base packages:
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] SeuratObject_4.0.2 Seurat_4.0.4      
+    ## [1] sp_1.5-0           SeuratObject_4.1.2 Seurat_4.2.0      
     ## 
     ## loaded via a namespace (and not attached):
-    ##   [1] nlme_3.1-152          spatstat.sparse_2.0-0 matrixStats_0.61.0   
-    ##   [4] RcppAnnoy_0.0.19      RColorBrewer_1.1-2    httr_1.4.2           
-    ##   [7] sctransform_0.3.2     tools_4.0.5           utf8_1.2.2           
-    ##  [10] R6_2.5.1              irlba_2.3.3           rpart_4.1-15         
-    ##  [13] KernSmooth_2.23-18    uwot_0.1.10           mgcv_1.8-34          
-    ##  [16] lazyeval_0.2.2        colorspace_2.0-2      tidyselect_1.1.1     
-    ##  [19] gridExtra_2.3         compiler_4.0.5        plotly_4.9.4.1       
-    ##  [22] labeling_0.4.2        scales_1.1.1          lmtest_0.9-38        
-    ##  [25] spatstat.data_2.1-0   ggridges_0.5.3        pbapply_1.5-0        
-    ##  [28] goftest_1.2-2         stringr_1.4.0         digest_0.6.28        
-    ##  [31] spatstat.utils_2.2-0  rmarkdown_2.11        pkgconfig_2.0.3      
-    ##  [34] htmltools_0.5.2       parallelly_1.28.1     highr_0.9            
-    ##  [37] fastmap_1.1.0         htmlwidgets_1.5.4     rlang_0.4.11         
-    ##  [40] shiny_1.7.0           farver_2.1.0          generics_0.1.0       
-    ##  [43] zoo_1.8-9             jsonlite_1.7.2        ica_1.0-2            
-    ##  [46] dplyr_1.0.7           magrittr_2.0.1        patchwork_1.1.1      
-    ##  [49] Matrix_1.3-4          Rcpp_1.0.7            munsell_0.5.0        
-    ##  [52] fansi_0.5.0           abind_1.4-5           reticulate_1.22      
-    ##  [55] lifecycle_1.0.1       stringi_1.7.4         yaml_2.2.1           
-    ##  [58] MASS_7.3-54           Rtsne_0.15            plyr_1.8.6           
-    ##  [61] grid_4.0.5            parallel_4.0.5        listenv_0.8.0        
-    ##  [64] promises_1.2.0.1      ggrepel_0.9.1         crayon_1.4.1         
-    ##  [67] deldir_0.2-10         miniUI_0.1.1.1        lattice_0.20-41      
-    ##  [70] cowplot_1.1.1         splines_4.0.5         tensor_1.5           
-    ##  [73] knitr_1.36            pillar_1.6.3          igraph_1.2.6         
-    ##  [76] spatstat.geom_2.2-2   future.apply_1.8.1    reshape2_1.4.4       
-    ##  [79] codetools_0.2-18      leiden_0.3.9          glue_1.4.2           
-    ##  [82] evaluate_0.14         data.table_1.14.2     png_0.1-7            
-    ##  [85] vctrs_0.3.8           httpuv_1.6.3          polyclip_1.10-0      
-    ##  [88] gtable_0.3.0          RANN_2.6.1            purrr_0.3.4          
-    ##  [91] spatstat.core_2.3-0   tidyr_1.1.4           scattermore_0.7      
-    ##  [94] future_1.22.1         ggplot2_3.3.5         xfun_0.26            
-    ##  [97] mime_0.12             xtable_1.8-4          later_1.3.0          
-    ## [100] survival_3.2-10       viridisLite_0.4.0     tibble_3.1.4         
-    ## [103] cluster_2.1.1         globals_0.14.0        fitdistrplus_1.1-6   
-    ## [106] ellipsis_0.3.2        ROCR_1.0-11
+    ##   [1] Rtsne_0.16            colorspace_2.0-3      deldir_1.0-6         
+    ##   [4] ellipsis_0.3.2        ggridges_0.5.4        rstudioapi_0.14      
+    ##   [7] spatstat.data_2.2-0   farver_2.1.1          leiden_0.4.3         
+    ##  [10] listenv_0.8.0         ggrepel_0.9.1         fansi_1.0.3          
+    ##  [13] codetools_0.2-18      splines_4.2.1         knitr_1.40           
+    ##  [16] polyclip_1.10-0       jsonlite_1.8.2        ica_1.0-3            
+    ##  [19] cluster_2.1.3         png_0.1-7             rgeos_0.5-9          
+    ##  [22] uwot_0.1.14           shiny_1.7.2           sctransform_0.3.5    
+    ##  [25] spatstat.sparse_2.1-1 compiler_4.2.1        httr_1.4.4           
+    ##  [28] assertthat_0.2.1      Matrix_1.5-0          fastmap_1.1.0        
+    ##  [31] lazyeval_0.2.2        cli_3.4.1             later_1.3.0          
+    ##  [34] htmltools_0.5.3       tools_4.2.1           igraph_1.3.5         
+    ##  [37] gtable_0.3.1          glue_1.6.2            RANN_2.6.1           
+    ##  [40] reshape2_1.4.4        dplyr_1.0.10          Rcpp_1.0.9           
+    ##  [43] scattermore_0.8       vctrs_0.4.2           nlme_3.1-157         
+    ##  [46] progressr_0.11.0      lmtest_0.9-40         spatstat.random_2.2-0
+    ##  [49] xfun_0.33             stringr_1.4.1         globals_0.16.1       
+    ##  [52] mime_0.12             miniUI_0.1.1.1        lifecycle_1.0.2      
+    ##  [55] irlba_2.3.5.1         goftest_1.2-3         future_1.28.0        
+    ##  [58] MASS_7.3-57           zoo_1.8-11            scales_1.2.1         
+    ##  [61] spatstat.core_2.4-4   promises_1.2.0.1      spatstat.utils_2.3-1 
+    ##  [64] parallel_4.2.1        RColorBrewer_1.1-3    yaml_2.3.5           
+    ##  [67] reticulate_1.26       pbapply_1.5-0         gridExtra_2.3        
+    ##  [70] ggplot2_3.3.6         rpart_4.1.16          stringi_1.7.8        
+    ##  [73] highr_0.9             rlang_1.0.6           pkgconfig_2.0.3      
+    ##  [76] matrixStats_0.62.0    evaluate_0.16         lattice_0.20-45      
+    ##  [79] ROCR_1.0-11           purrr_0.3.5           tensor_1.5           
+    ##  [82] labeling_0.4.2        patchwork_1.1.2       htmlwidgets_1.5.4    
+    ##  [85] cowplot_1.1.1         tidyselect_1.1.2      parallelly_1.32.1    
+    ##  [88] RcppAnnoy_0.0.19      plyr_1.8.7            magrittr_2.0.3       
+    ##  [91] R6_2.5.1              generics_0.1.3        DBI_1.1.3            
+    ##  [94] mgcv_1.8-40           pillar_1.8.1          fitdistrplus_1.1-8   
+    ##  [97] survival_3.3-1        abind_1.4-5           tibble_3.1.8         
+    ## [100] future.apply_1.9.1    KernSmooth_2.23-20    utf8_1.2.2           
+    ## [103] spatstat.geom_2.4-0   plotly_4.10.0         rmarkdown_2.16       
+    ## [106] grid_4.2.1            data.table_1.14.2     digest_0.6.29        
+    ## [109] xtable_1.8-4          tidyr_1.2.1           httpuv_1.6.6         
+    ## [112] munsell_0.5.0         viridisLite_0.4.1

@@ -4,7 +4,8 @@ Thomas Hollt, Mohammed Charrout, Lieke Michielsen
 
 # Dimensionality Reduction & Visualization
 
-In this tutorial we will look at different ways to visualize single cell
+In this tutorial we will look at different ways to visualize single
+celhttps://0a5681ff63cf4da19c61ae6d3d88b674.app.rstudio.cloud/graphics/ce6dfe91-200f-4e6d-a39b-e7db96824545.pngl
 RNA-seq datasets using dimensionality reduction. We will apply the
 Principal Component Analysis (PCA), t-distributed Stochastic Neighbor
 Embedding (t-SNE) and Uniform Manifold Approximation and Projection
@@ -434,8 +435,8 @@ one plot for each feature in the list and lastly, `reduction = "pca"`
 will create PCA plots.
 
 Not surprisingly, the top two features of the first PC form a smooth
-gradient on the PC\_1 axis and the top two features of the second PC a
-smooth gradient on the PC\_2 axis.
+gradient on the PC_1 axis and the top two features of the second PC a
+smooth gradient on the PC_2 axis.
 
 ``` r
 # find top genes for PCs 1 and 2
@@ -522,58 +523,62 @@ might be useful.
 sessionInfo()
 ```
 
-    ## R version 4.0.5 (2021-03-31)
-    ## Platform: x86_64-w64-mingw32/x64 (64-bit)
-    ## Running under: Windows 10 x64 (build 18363)
+    ## R version 4.2.1 (2022-06-23)
+    ## Platform: x86_64-pc-linux-gnu (64-bit)
+    ## Running under: Ubuntu 20.04.5 LTS
     ## 
     ## Matrix products: default
+    ## BLAS:   /usr/lib/x86_64-linux-gnu/atlas/libblas.so.3.10.3
+    ## LAPACK: /usr/lib/x86_64-linux-gnu/atlas/liblapack.so.3.10.3
     ## 
     ## locale:
-    ## [1] LC_COLLATE=Dutch_Netherlands.1252  LC_CTYPE=Dutch_Netherlands.1252   
-    ## [3] LC_MONETARY=Dutch_Netherlands.1252 LC_NUMERIC=C                      
-    ## [5] LC_TIME=Dutch_Netherlands.1252    
+    ##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+    ##  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+    ##  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+    ## [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
     ## 
     ## attached base packages:
     ## [1] stats     graphics  grDevices utils     datasets  methods   base     
     ## 
     ## other attached packages:
-    ## [1] ggplot2_3.3.5      SeuratObject_4.0.2 Seurat_4.0.4      
+    ## [1] ggplot2_3.3.6      sp_1.5-0           SeuratObject_4.1.2 Seurat_4.2.0      
     ## 
     ## loaded via a namespace (and not attached):
-    ##   [1] nlme_3.1-152          spatstat.sparse_2.0-0 matrixStats_0.61.0   
-    ##   [4] RcppAnnoy_0.0.19      RColorBrewer_1.1-2    httr_1.4.2           
-    ##   [7] sctransform_0.3.2     tools_4.0.5           utf8_1.2.2           
-    ##  [10] R6_2.5.1              irlba_2.3.3           rpart_4.1-15         
-    ##  [13] KernSmooth_2.23-18    uwot_0.1.10           mgcv_1.8-34          
-    ##  [16] lazyeval_0.2.2        colorspace_2.0-2      withr_2.4.2          
-    ##  [19] tidyselect_1.1.1      gridExtra_2.3         compiler_4.0.5       
-    ##  [22] plotly_4.9.4.1        labeling_0.4.2        scales_1.1.1         
-    ##  [25] lmtest_0.9-38         spatstat.data_2.1-0   ggridges_0.5.3       
-    ##  [28] pbapply_1.5-0         goftest_1.2-2         stringr_1.4.0        
-    ##  [31] digest_0.6.28         spatstat.utils_2.2-0  rmarkdown_2.11       
-    ##  [34] pkgconfig_2.0.3       htmltools_0.5.2       parallelly_1.28.1    
-    ##  [37] highr_0.9             fastmap_1.1.0         htmlwidgets_1.5.4    
-    ##  [40] rlang_0.4.11          FNN_1.1.3             shiny_1.7.0          
-    ##  [43] farver_2.1.0          generics_0.1.0        zoo_1.8-9            
-    ##  [46] jsonlite_1.7.2        ica_1.0-2             dplyr_1.0.7          
-    ##  [49] magrittr_2.0.1        patchwork_1.1.1       Matrix_1.3-4         
-    ##  [52] Rcpp_1.0.7            munsell_0.5.0         fansi_0.5.0          
-    ##  [55] abind_1.4-5           reticulate_1.22       lifecycle_1.0.1      
-    ##  [58] stringi_1.7.4         yaml_2.2.1            MASS_7.3-54          
-    ##  [61] Rtsne_0.15            plyr_1.8.6            grid_4.0.5           
-    ##  [64] parallel_4.0.5        listenv_0.8.0         promises_1.2.0.1     
-    ##  [67] ggrepel_0.9.1         crayon_1.4.1          deldir_0.2-10        
-    ##  [70] miniUI_0.1.1.1        lattice_0.20-41       cowplot_1.1.1        
-    ##  [73] splines_4.0.5         tensor_1.5            knitr_1.36           
-    ##  [76] pillar_1.6.3          igraph_1.2.6          spatstat.geom_2.2-2  
-    ##  [79] future.apply_1.8.1    reshape2_1.4.4        codetools_0.2-18     
-    ##  [82] leiden_0.3.9          glue_1.4.2            evaluate_0.14        
-    ##  [85] data.table_1.14.2     png_0.1-7             vctrs_0.3.8          
-    ##  [88] httpuv_1.6.3          polyclip_1.10-0       gtable_0.3.0         
-    ##  [91] RANN_2.6.1            purrr_0.3.4           spatstat.core_2.3-0  
-    ##  [94] tidyr_1.1.4           scattermore_0.7       future_1.22.1        
-    ##  [97] xfun_0.26             mime_0.12             xtable_1.8-4         
-    ## [100] RSpectra_0.16-0       later_1.3.0           survival_3.2-10      
-    ## [103] viridisLite_0.4.0     tibble_3.1.4          cluster_2.1.1        
-    ## [106] globals_0.14.0        fitdistrplus_1.1-6    ellipsis_0.3.2       
-    ## [109] ROCR_1.0-11
+    ##   [1] Rtsne_0.16            colorspace_2.0-3      deldir_1.0-6         
+    ##   [4] ellipsis_0.3.2        ggridges_0.5.4        rstudioapi_0.14      
+    ##   [7] spatstat.data_2.2-0   farver_2.1.1          leiden_0.4.3         
+    ##  [10] listenv_0.8.0         ggrepel_0.9.1         fansi_1.0.3          
+    ##  [13] codetools_0.2-18      splines_4.2.1         knitr_1.40           
+    ##  [16] polyclip_1.10-0       jsonlite_1.8.2        ica_1.0-3            
+    ##  [19] cluster_2.1.3         png_0.1-7             rgeos_0.5-9          
+    ##  [22] uwot_0.1.14           shiny_1.7.2           sctransform_0.3.5    
+    ##  [25] spatstat.sparse_2.1-1 compiler_4.2.1        httr_1.4.4           
+    ##  [28] assertthat_0.2.1      Matrix_1.5-0          fastmap_1.1.0        
+    ##  [31] lazyeval_0.2.2        cli_3.4.1             later_1.3.0          
+    ##  [34] htmltools_0.5.3       tools_4.2.1           igraph_1.3.5         
+    ##  [37] gtable_0.3.1          glue_1.6.2            RANN_2.6.1           
+    ##  [40] reshape2_1.4.4        dplyr_1.0.10          Rcpp_1.0.9           
+    ##  [43] scattermore_0.8       vctrs_0.4.2           nlme_3.1-157         
+    ##  [46] progressr_0.11.0      lmtest_0.9-40         spatstat.random_2.2-0
+    ##  [49] xfun_0.33             stringr_1.4.1         globals_0.16.1       
+    ##  [52] mime_0.12             miniUI_0.1.1.1        lifecycle_1.0.2      
+    ##  [55] irlba_2.3.5.1         goftest_1.2-3         future_1.28.0        
+    ##  [58] MASS_7.3-57           zoo_1.8-11            scales_1.2.1         
+    ##  [61] spatstat.core_2.4-4   promises_1.2.0.1      spatstat.utils_2.3-1 
+    ##  [64] parallel_4.2.1        RColorBrewer_1.1-3    yaml_2.3.5           
+    ##  [67] reticulate_1.26       pbapply_1.5-0         gridExtra_2.3        
+    ##  [70] rpart_4.1.16          stringi_1.7.8         highr_0.9            
+    ##  [73] rlang_1.0.6           pkgconfig_2.0.3       matrixStats_0.62.0   
+    ##  [76] evaluate_0.16         lattice_0.20-45       ROCR_1.0-11          
+    ##  [79] purrr_0.3.5           tensor_1.5            labeling_0.4.2       
+    ##  [82] patchwork_1.1.2       htmlwidgets_1.5.4     cowplot_1.1.1        
+    ##  [85] tidyselect_1.1.2      parallelly_1.32.1     RcppAnnoy_0.0.19     
+    ##  [88] plyr_1.8.7            magrittr_2.0.3        R6_2.5.1             
+    ##  [91] generics_0.1.3        DBI_1.1.3             withr_2.5.0          
+    ##  [94] mgcv_1.8-40           pillar_1.8.1          fitdistrplus_1.1-8   
+    ##  [97] survival_3.3-1        abind_1.4-5           tibble_3.1.8         
+    ## [100] future.apply_1.9.1    KernSmooth_2.23-20    utf8_1.2.2           
+    ## [103] spatstat.geom_2.4-0   plotly_4.10.0         rmarkdown_2.16       
+    ## [106] grid_4.2.1            data.table_1.14.2     FNN_1.1.3.1          
+    ## [109] digest_0.6.29         xtable_1.8-4          tidyr_1.2.1          
+    ## [112] httpuv_1.6.6          munsell_0.5.0         viridisLite_0.4.1

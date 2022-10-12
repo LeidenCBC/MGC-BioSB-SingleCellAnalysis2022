@@ -292,7 +292,7 @@ size for each gene. `logFC` is defined here as the log-fold change from
 the comparison with the lowest p-value. The `p.value` field contains the
 combined p-value that is obtained by applying Simes’ method to the
 pairwise p-values for each gene. Of particular interest is the `Top`
-field. The set of genes with `Top`  ≤ *X* is the union of the top *X*
+field. The set of genes with `Top` $≤ X$ is the union of the top $X$
 genes (ranked by p-value) from each pairwise comparison involving the
 cluster of interest.
 
@@ -469,38 +469,38 @@ head(cd8.markers, n=10)
 ```
 
     ##        p3.1k_p_val p3.1k_avg_log2FC p3.1k_pct.1 p3.1k_pct.2 p3.1k_p_val_adj
-    ## CD8A  5.606455e-46         1.543765       0.474       0.029    1.880293e-41
-    ## CD8B  9.689188e-33         1.295638       0.320       0.016    3.249560e-28
-    ## CCL5  2.644436e-44         2.656488       0.670       0.112    8.868911e-40
-    ## GZMK  1.630749e-43         2.059469       0.485       0.037    5.469207e-39
-    ## CTSW  7.522387e-28         1.287593       0.619       0.138    2.522858e-23
-    ## TRGC2 1.445072e-32         1.323161       0.412       0.042    4.846484e-28
-    ## KLRG1 7.329561e-27         1.274761       0.526       0.104    2.458188e-22
-    ## GZMA  5.359275e-31         1.395253       0.515       0.073    1.797394e-26
-    ## NKG7  6.793357e-26         1.292141       0.557       0.119    2.278356e-21
-    ## IL32  8.959317e-27         1.585711       0.773       0.255    3.004776e-22
+    ## CD8A  5.606455e-46        0.7677837       0.474       0.029    1.880293e-41
+    ## CD8B  9.689188e-33        0.5813669       0.320       0.016    3.249560e-28
+    ## CCL5  2.644436e-44        1.2494188       0.670       0.112    8.868911e-40
+    ## GZMK  1.630749e-43        0.9375367       0.485       0.037    5.469207e-39
+    ## CTSW  7.522387e-28        0.7995142       0.619       0.138    2.522858e-23
+    ## TRGC2 1.445072e-32        0.6268683       0.412       0.042    4.846484e-28
+    ## KLRG1 7.329561e-27        0.6795400       0.526       0.104    2.458188e-22
+    ## GZMA  5.359275e-31        0.8160620       0.515       0.073    1.797394e-26
+    ## NKG7  6.793357e-26        0.9141269       0.557       0.119    2.278356e-21
+    ## IL32  8.959317e-27        0.9018782       0.773       0.255    3.004776e-22
     ##        v2.1k_p_val v2.1k_avg_log2FC v2.1k_pct.1 v2.1k_pct.2 v2.1k_p_val_adj
-    ## CD8A  5.924812e-84         1.944534       0.533       0.021    1.987063e-79
-    ## CD8B  5.977072e-90         2.100184       0.526       0.014    2.004590e-85
-    ## CCL5  1.482409e-67         2.327723       0.774       0.135    4.971704e-63
-    ## GZMK  7.670258e-71         2.234174       0.496       0.027    2.572451e-66
-    ## CTSW  3.568178e-54         1.431782       0.788       0.169    1.196695e-49
-    ## TRGC2 7.867071e-55         1.960427       0.401       0.024    2.638458e-50
-    ## KLRG1 1.306959e-39         1.436802       0.445       0.063    4.383279e-35
-    ## GZMA  1.139184e-39         1.388649       0.620       0.123    3.820595e-35
-    ## NKG7  3.273629e-52         1.170457       0.745       0.144    1.097910e-47
-    ## IL32  8.653273e-56         1.830066       0.978       0.336    2.902135e-51
+    ## CD8A  5.924812e-84        0.9274829       0.533       0.021    1.987063e-79
+    ## CD8B  5.977072e-90        0.9660926       0.526       0.014    2.004590e-85
+    ## CCL5  1.482409e-67        1.3575713       0.774       0.135    4.971704e-63
+    ## GZMK  7.670258e-71        0.9749431       0.496       0.027    2.572451e-66
+    ## CTSW  3.568178e-54        0.9787909       0.788       0.169    1.196695e-49
+    ## TRGC2 7.867071e-55        0.7988219       0.401       0.024    2.638458e-50
+    ## KLRG1 1.306959e-39        0.7062089       0.445       0.063    4.383279e-35
+    ## GZMA  1.139184e-39        0.8793879       0.620       0.123    3.820595e-35
+    ## NKG7  3.273629e-52        1.1372461       0.745       0.144    1.097910e-47
+    ## IL32  8.653273e-56        1.0574313       0.978       0.336    2.902135e-51
     ##         v3.1k_p_val v3.1k_avg_log2FC v3.1k_pct.1 v3.1k_pct.2 v3.1k_p_val_adj
-    ## CD8A  1.068397e-126         1.961412       0.695       0.022   3.583191e-122
-    ## CD8B   4.247617e-98         1.901227       0.523       0.011    1.424566e-93
-    ## CCL5   6.657331e-89         2.550836       0.764       0.101    2.232736e-84
-    ## GZMK   9.705468e-88         2.580187       0.615       0.050    3.255020e-83
-    ## CTSW   6.102467e-87         1.482927       0.925       0.184    2.046645e-82
-    ## TRGC2  3.555947e-72         1.823488       0.546       0.053    1.192593e-67
-    ## KLRG1  5.363311e-72         1.782824       0.690       0.116    1.798747e-67
-    ## GZMA   1.635706e-69         1.726378       0.707       0.105    5.485831e-65
-    ## NKG7   2.496780e-69         1.621816       0.741       0.127    8.373701e-65
-    ## IL32   9.307544e-66         1.823237       0.977       0.334    3.121564e-61
+    ## CD8A  1.068397e-126        1.0396035       0.695       0.022   3.583191e-122
+    ## CD8B   4.247617e-98        0.9085388       0.523       0.011    1.424566e-93
+    ## CCL5   6.657331e-89        1.3265717       0.764       0.101    2.232736e-84
+    ## GZMK   9.705468e-88        1.1463129       0.615       0.050    3.255020e-83
+    ## CTSW   6.102467e-87        1.0337617       0.925       0.184    2.046645e-82
+    ## TRGC2  3.555947e-72        0.8583026       0.546       0.053    1.192593e-67
+    ## KLRG1  5.363311e-72        0.9429709       0.690       0.116    1.798747e-67
+    ## GZMA   1.635706e-69        1.0535083       0.707       0.105    5.485831e-65
+    ## NKG7   2.496780e-69        1.1975830       0.741       0.127    8.373701e-65
+    ## IL32   9.307544e-66        1.0263634       0.977       0.334    3.121564e-61
     ##           max_pval minimump_p_val
     ## CD8A  5.606455e-46  3.205192e-126
     ## CD8B  9.689188e-33   1.274285e-97
@@ -557,104 +557,114 @@ plotExpression(pbmc.all.sce, x=I(factor(pbmc.all.sce$celltype)),
 sessionInfo()
 ```
 
-    ## R version 4.1.1 (2021-08-10)
-    ## Platform: x86_64-conda-linux-gnu (64-bit)
-    ## Running under: KDE neon User Edition 5.22
+    ## R version 4.2.1 (2022-06-23)
+    ## Platform: x86_64-pc-linux-gnu (64-bit)
+    ## Running under: Ubuntu 20.04.5 LTS
     ## 
     ## Matrix products: default
-    ## BLAS/LAPACK: /home/mochar/miniconda3/envs/sc_course/lib/libopenblasp-r0.3.17.so
+    ## BLAS:   /usr/lib/x86_64-linux-gnu/atlas/libblas.so.3.10.3
+    ## LAPACK: /usr/lib/x86_64-linux-gnu/atlas/liblapack.so.3.10.3
     ## 
     ## locale:
-    ##  [1] LC_CTYPE=nl_NL.UTF-8       LC_NUMERIC=C              
-    ##  [3] LC_TIME=nl_NL.UTF-8        LC_COLLATE=nl_NL.UTF-8    
-    ##  [5] LC_MONETARY=nl_NL.UTF-8    LC_MESSAGES=nl_NL.UTF-8   
-    ##  [7] LC_PAPER=nl_NL.UTF-8       LC_NAME=C                 
-    ##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
-    ## [11] LC_MEASUREMENT=nl_NL.UTF-8 LC_IDENTIFICATION=C       
+    ##  [1] LC_CTYPE=C.UTF-8       LC_NUMERIC=C           LC_TIME=C.UTF-8       
+    ##  [4] LC_COLLATE=C.UTF-8     LC_MONETARY=C.UTF-8    LC_MESSAGES=C.UTF-8   
+    ##  [7] LC_PAPER=C.UTF-8       LC_NAME=C              LC_ADDRESS=C          
+    ## [10] LC_TELEPHONE=C         LC_MEASUREMENT=C.UTF-8 LC_IDENTIFICATION=C   
     ## 
     ## attached base packages:
-    ## [1] parallel  stats4    stats     graphics  grDevices utils     datasets 
-    ## [8] methods   base     
+    ## [1] stats4    stats     graphics  grDevices utils     datasets  methods  
+    ## [8] base     
     ## 
     ## other attached packages:
-    ##  [1] pheatmap_1.0.12             scater_1.20.1              
-    ##  [3] ggplot2_3.3.5               scran_1.20.1               
-    ##  [5] scuttle_1.2.1               SingleCellExperiment_1.14.1
-    ##  [7] SummarizedExperiment_1.22.0 Biobase_2.52.0             
-    ##  [9] GenomicRanges_1.44.0        GenomeInfoDb_1.28.4        
-    ## [11] IRanges_2.26.0              S4Vectors_0.30.0           
-    ## [13] BiocGenerics_0.38.0         MatrixGenerics_1.4.3       
-    ## [15] matrixStats_0.61.0          SeuratObject_4.0.2         
-    ## [17] Seurat_4.0.4               
+    ##  [1] pheatmap_1.0.12             scater_1.24.0              
+    ##  [3] ggplot2_3.3.6               scran_1.24.1               
+    ##  [5] scuttle_1.6.3               SingleCellExperiment_1.18.1
+    ##  [7] SummarizedExperiment_1.26.1 Biobase_2.56.0             
+    ##  [9] GenomicRanges_1.48.0        GenomeInfoDb_1.32.4        
+    ## [11] IRanges_2.30.1              S4Vectors_0.34.0           
+    ## [13] BiocGenerics_0.42.0         MatrixGenerics_1.8.1       
+    ## [15] matrixStats_0.62.0          sp_1.5-0                   
+    ## [17] SeuratObject_4.1.2          Seurat_4.2.0               
     ## 
     ## loaded via a namespace (and not attached):
-    ##   [1] plyr_1.8.6                igraph_1.2.6             
-    ##   [3] lazyeval_0.2.2            splines_4.1.1            
-    ##   [5] BiocParallel_1.26.2       listenv_0.8.0            
-    ##   [7] scattermore_0.7           digest_0.6.27            
-    ##   [9] htmltools_0.5.2           viridis_0.6.1            
-    ##  [11] fansi_0.5.0               magrittr_2.0.1           
-    ##  [13] ScaledMatrix_1.0.0        tensor_1.5               
-    ##  [15] cluster_2.1.2             ROCR_1.0-11              
-    ##  [17] limma_3.48.3              globals_0.14.0           
-    ##  [19] spatstat.sparse_2.0-0     prettyunits_1.1.1        
-    ##  [21] colorspace_2.0-2          ggrepel_0.9.1            
-    ##  [23] rbibutils_2.2.3           xfun_0.26                
-    ##  [25] dplyr_1.0.7               crayon_1.4.1             
-    ##  [27] RCurl_1.98-1.5            jsonlite_1.7.2           
-    ##  [29] spatstat.data_2.1-0       survival_3.2-13          
-    ##  [31] zoo_1.8-9                 glue_1.4.2               
-    ##  [33] polyclip_1.10-0           gtable_0.3.0             
-    ##  [35] zlibbioc_1.38.0           XVector_0.32.0           
-    ##  [37] leiden_0.3.9              DelayedArray_0.18.0      
-    ##  [39] BiocSingular_1.8.1        future.apply_1.8.1       
-    ##  [41] abind_1.4-5               scales_1.1.1             
-    ##  [43] edgeR_3.34.1              miniUI_0.1.1.1           
-    ##  [45] Rcpp_1.0.7                metap_1.1                
-    ##  [47] progress_1.2.2            viridisLite_0.4.0        
-    ##  [49] xtable_1.8-4              reticulate_1.22          
-    ##  [51] spatstat.core_2.3-0       dqrng_0.3.0              
-    ##  [53] bit_4.0.4                 rsvd_1.0.5               
-    ##  [55] metapod_1.0.0             htmlwidgets_1.5.4        
-    ##  [57] httr_1.4.2                RColorBrewer_1.1-2       
-    ##  [59] ellipsis_0.3.2            ica_1.0-2                
-    ##  [61] farver_2.1.0              pkgconfig_2.0.3          
-    ##  [63] uwot_0.1.10               deldir_0.2-10            
-    ##  [65] locfit_1.5-9.4            utf8_1.2.2               
-    ##  [67] labeling_0.4.2            tidyselect_1.1.1         
-    ##  [69] rlang_0.4.11              reshape2_1.4.4           
-    ##  [71] later_1.3.0               munsell_0.5.0            
-    ##  [73] tools_4.1.1               generics_0.1.0           
-    ##  [75] ggridges_0.5.3            evaluate_0.14            
-    ##  [77] stringr_1.4.0             fastmap_1.1.0            
-    ##  [79] yaml_2.2.1                goftest_1.2-2            
-    ##  [81] bit64_4.0.5               knitr_1.34               
-    ##  [83] fitdistrplus_1.1-5        purrr_0.3.4              
-    ##  [85] RANN_2.6.1                pbapply_1.5-0            
-    ##  [87] future_1.22.1             nlme_3.1-153             
-    ##  [89] sparseMatrixStats_1.4.2   mime_0.11                
-    ##  [91] hdf5r_1.3.4               compiler_4.1.1           
-    ##  [93] beeswarm_0.4.0            plotly_4.9.4.1           
-    ##  [95] png_0.1-7                 spatstat.utils_2.2-0     
-    ##  [97] statmod_1.4.36            tibble_3.1.4             
-    ##  [99] stringi_1.7.4             highr_0.9                
-    ## [101] lattice_0.20-44           bluster_1.2.1            
-    ## [103] Matrix_1.3-4              vctrs_0.3.8              
-    ## [105] pillar_1.6.2              lifecycle_1.0.0          
-    ## [107] Rdpack_2.1.2              spatstat.geom_2.2-2      
-    ## [109] lmtest_0.9-38             RcppAnnoy_0.0.19         
-    ## [111] BiocNeighbors_1.10.0      data.table_1.14.0        
-    ## [113] cowplot_1.1.1             bitops_1.0-7             
-    ## [115] irlba_2.3.3               httpuv_1.6.3             
-    ## [117] patchwork_1.1.1           R6_2.5.1                 
-    ## [119] promises_1.2.0.1          KernSmooth_2.23-20       
-    ## [121] gridExtra_2.3             vipor_0.4.5              
-    ## [123] parallelly_1.28.1         codetools_0.2-18         
-    ## [125] MASS_7.3-54               MAST_1.18.0              
-    ## [127] withr_2.4.2               sctransform_0.3.2        
-    ## [129] GenomeInfoDbData_1.2.6    hms_1.1.1                
-    ## [131] mgcv_1.8-36               grid_4.1.1               
-    ## [133] rpart_4.1-15              beachmat_2.8.1           
-    ## [135] tidyr_1.1.3               rmarkdown_2.11           
-    ## [137] DelayedMatrixStats_1.14.3 Rtsne_0.15               
-    ## [139] shiny_1.6.0               ggbeeswarm_0.6.0
+    ##   [1] utf8_1.2.2                reticulate_1.26          
+    ##   [3] tidyselect_1.1.2          htmlwidgets_1.5.4        
+    ##   [5] grid_4.2.1                BiocParallel_1.30.3      
+    ##   [7] Rtsne_0.16                munsell_0.5.0            
+    ##   [9] ScaledMatrix_1.4.1        mutoss_0.1-12            
+    ##  [11] codetools_0.2-18          ica_1.0-3                
+    ##  [13] statmod_1.4.37            future_1.28.0            
+    ##  [15] miniUI_0.1.1.1            withr_2.5.0              
+    ##  [17] spatstat.random_2.2-0     colorspace_2.0-3         
+    ##  [19] progressr_0.11.0          highr_0.9                
+    ##  [21] knitr_1.40                rstudioapi_0.14          
+    ##  [23] ROCR_1.0-11               tensor_1.5               
+    ##  [25] listenv_0.8.0             Rdpack_2.4               
+    ##  [27] labeling_0.4.2            GenomeInfoDbData_1.2.8   
+    ##  [29] mnormt_2.1.1              polyclip_1.10-0          
+    ##  [31] bit64_4.0.5               farver_2.1.1             
+    ##  [33] TH.data_1.1-1             parallelly_1.32.1        
+    ##  [35] vctrs_0.4.2               generics_0.1.3           
+    ##  [37] xfun_0.33                 R6_2.5.1                 
+    ##  [39] ggbeeswarm_0.6.0          rsvd_1.0.5               
+    ##  [41] locfit_1.5-9.6            hdf5r_1.3.7              
+    ##  [43] bitops_1.0-7              spatstat.utils_2.3-1     
+    ##  [45] DelayedArray_0.22.0       assertthat_0.2.1         
+    ##  [47] promises_1.2.0.1          scales_1.2.1             
+    ##  [49] multcomp_1.4-20           rgeos_0.5-9              
+    ##  [51] beeswarm_0.4.0            gtable_0.3.1             
+    ##  [53] beachmat_2.12.0           globals_0.16.1           
+    ##  [55] goftest_1.2-3             sandwich_3.0-2           
+    ##  [57] rlang_1.0.6               splines_4.2.1            
+    ##  [59] lazyeval_0.2.2            spatstat.geom_2.4-0      
+    ##  [61] yaml_2.3.5                reshape2_1.4.4           
+    ##  [63] abind_1.4-5               httpuv_1.6.6             
+    ##  [65] tools_4.2.1               ellipsis_0.3.2           
+    ##  [67] spatstat.core_2.4-4       RColorBrewer_1.1-3       
+    ##  [69] ggridges_0.5.4            TFisher_0.2.0            
+    ##  [71] Rcpp_1.0.9                plyr_1.8.7               
+    ##  [73] sparseMatrixStats_1.8.0   progress_1.2.2           
+    ##  [75] zlibbioc_1.42.0           purrr_0.3.4              
+    ##  [77] RCurl_1.98-1.9            prettyunits_1.1.1        
+    ##  [79] rpart_4.1.16              deldir_1.0-6             
+    ##  [81] pbapply_1.5-0             viridis_0.6.2            
+    ##  [83] cowplot_1.1.1             zoo_1.8-11               
+    ##  [85] ggrepel_0.9.1             cluster_2.1.3            
+    ##  [87] magrittr_2.0.3            data.table_1.14.2        
+    ##  [89] scattermore_0.8           lmtest_0.9-40            
+    ##  [91] RANN_2.6.1                mvtnorm_1.1-3            
+    ##  [93] fitdistrplus_1.1-8        hms_1.1.2                
+    ##  [95] patchwork_1.1.2           mime_0.12                
+    ##  [97] evaluate_0.16             xtable_1.8-4             
+    ##  [99] gridExtra_2.3             compiler_4.2.1           
+    ## [101] tibble_3.1.8              KernSmooth_2.23-20       
+    ## [103] crayon_1.5.2              htmltools_0.5.3          
+    ## [105] mgcv_1.8-40               later_1.3.0              
+    ## [107] tidyr_1.2.1               DBI_1.1.3                
+    ## [109] MASS_7.3-57               MAST_1.22.0              
+    ## [111] Matrix_1.5-0              cli_3.4.1                
+    ## [113] rbibutils_2.2.9           qqconf_1.3.0             
+    ## [115] parallel_4.2.1            metapod_1.4.0            
+    ## [117] metap_1.8                 igraph_1.3.5             
+    ## [119] pkgconfig_2.0.3           sn_2.1.0                 
+    ## [121] numDeriv_2016.8-1.1       plotly_4.10.0            
+    ## [123] spatstat.sparse_2.1-1     vipor_0.4.5              
+    ## [125] dqrng_0.3.0               multtest_2.52.0          
+    ## [127] XVector_0.36.0            stringr_1.4.1            
+    ## [129] digest_0.6.29             sctransform_0.3.5        
+    ## [131] RcppAnnoy_0.0.19          spatstat.data_2.2-0      
+    ## [133] rmarkdown_2.16            leiden_0.4.3             
+    ## [135] uwot_0.1.14               edgeR_3.38.4             
+    ## [137] DelayedMatrixStats_1.18.1 shiny_1.7.2              
+    ## [139] lifecycle_1.0.2           nlme_3.1-157             
+    ## [141] jsonlite_1.8.2            BiocNeighbors_1.14.0     
+    ## [143] viridisLite_0.4.1         limma_3.52.4             
+    ## [145] fansi_1.0.3               pillar_1.8.1             
+    ## [147] lattice_0.20-45           plotrix_3.8-2            
+    ## [149] fastmap_1.1.0             httr_1.4.4               
+    ## [151] survival_3.3-1            glue_1.6.2               
+    ## [153] png_0.1-7                 bluster_1.6.0            
+    ## [155] bit_4.0.4                 stringi_1.7.8            
+    ## [157] BiocSingular_1.12.0       mathjaxr_1.6-0           
+    ## [159] dplyr_1.0.10              irlba_2.3.5.1            
+    ## [161] future.apply_1.9.1

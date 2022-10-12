@@ -30,6 +30,7 @@ rm(list=ls())
 
 suppressMessages(require(Seurat))
 suppressMessages(require(harmony))
+## Please use devtools::install_github("eddelbuettel/harmony",force = TRUE) to install harmony if it showed error on "Runharmony" function on your own device.
 ```
 
 ## Seurat (anchors and CCA)
@@ -147,8 +148,8 @@ p1+p2
 An alternative approach to integrate single cell RNA-seq data is using [Harmony](https://doi.org/10.1038/s41592-019-0619-0). The simplest way to run Harmony, is to directly run it on a Seurat object.
 
 ```{r harmony, fig.width=5}
-
-pbmc <- RunHarmony(pbmc, 'orig.ident', plot_convergence = TRUE)
+pbmc <- RunPCA(pbmc, npcs = 30, verbose = FALSE)
+pbmc <- RunHarmony(pbmc, "orig.ident", plot_convergence = TRUE)
 
 ```
 
