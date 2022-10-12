@@ -1,8 +1,6 @@
 ---
 title: "Spatial Transcriptomics"
-output:
-  html_document:
-    df_print: paged
+output: github_document
 ---
 
 Created by: Qirong Mao
@@ -84,7 +82,7 @@ brain$percent_mito < 25 & brain$percent_hb < 10]
 
 Now let us check the data again after filtering:
 
-```{r visualize tissue slide after QC, fig.width=8, fig.height=8}
+```{r visualize tissue slide after QC, fig.width=10, fig.height=8}
 
 SpatialFeaturePlot(brain, features = c("nCount_Spatial", "nFeature_Spatial", "percent_mito","percent_hb"))
 
@@ -103,7 +101,7 @@ brain <- SCTransform(brain, assay = "Spatial", verbose = FALSE)
 
 We can try plot gene expression onto the tissue section
 
-```{r plotting genes, fig.width=6, fig.height=6}
+```{r plotting genes, fig.width=10, fig.height=8}
 
 SpatialFeaturePlot(brain, features = c("Hpca", "Ttr"))
 
@@ -201,7 +199,7 @@ After processing of spatial data, then we load the pre-processed single-cell ref
 
 ```{r loading reference, warning=FALSE}
 
-allen_reference <- readRDS("D://Data/allen_reference_processed.rds")
+allen_reference <- readRDS("./allen_reference_processed.rds")
 
 ```
 

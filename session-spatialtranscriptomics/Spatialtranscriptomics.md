@@ -141,26 +141,26 @@ brain <- FindClusters(brain, verbose = FALSE)
 brain <- RunUMAP(brain, reduction = "pca", dims = 1:30)
 ```
 
-    ## 21:52:02 UMAP embedding parameters a = 0.9922 b = 1.112
+    ## 14:23:54 UMAP embedding parameters a = 0.9922 b = 1.112
 
-    ## 21:52:02 Read 2560 rows and found 30 numeric columns
+    ## 14:23:54 Read 2560 rows and found 30 numeric columns
 
-    ## 21:52:02 Using Annoy for neighbor search, n_neighbors = 30
+    ## 14:23:54 Using Annoy for neighbor search, n_neighbors = 30
 
-    ## 21:52:02 Building Annoy index with metric = cosine, n_trees = 50
+    ## 14:23:54 Building Annoy index with metric = cosine, n_trees = 50
 
     ## 0%   10   20   30   40   50   60   70   80   90   100%
 
     ## [----|----|----|----|----|----|----|----|----|----|
 
     ## **************************************************|
-    ## 21:52:02 Writing NN index file to temp file /tmp/Rtmpe9zGyv/file141ad1f7b3
-    ## 21:52:02 Searching Annoy index using 1 thread, search_k = 3000
-    ## 21:52:03 Annoy recall = 100%
-    ## 21:52:03 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
-    ## 21:52:03 Initializing from normalized Laplacian + noise (using irlba)
-    ## 21:52:04 Commencing optimization for 500 epochs, with 100028 positive edges
-    ## 21:52:06 Optimization finished
+    ## 14:23:54 Writing NN index file to temp file /tmp/RtmpWB6bbq/file22e14b32344
+    ## 14:23:54 Searching Annoy index using 1 thread, search_k = 3000
+    ## 14:23:54 Annoy recall = 100%
+    ## 14:23:55 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+    ## 14:23:55 Initializing from normalized Laplacian + noise (using irlba)
+    ## 14:23:55 Commencing optimization for 500 epochs, with 100028 positive edges
+    ## 14:23:58 Optimization finished
 
 We can visualize the clustering results on UMAP or onto the tissue
 section:
@@ -330,26 +330,26 @@ RNA expression data.
 
     ## Computing SNN
 
-    ## 21:54:09 UMAP embedding parameters a = 0.9922 b = 1.112
+    ## 14:25:47 UMAP embedding parameters a = 0.9922 b = 1.112
 
-    ## 21:54:09 Read 5659 rows and found 30 numeric columns
+    ## 14:25:47 Read 5659 rows and found 30 numeric columns
 
-    ## 21:54:09 Using Annoy for neighbor search, n_neighbors = 30
+    ## 14:25:47 Using Annoy for neighbor search, n_neighbors = 30
 
-    ## 21:54:09 Building Annoy index with metric = cosine, n_trees = 50
+    ## 14:25:47 Building Annoy index with metric = cosine, n_trees = 50
 
     ## 0%   10   20   30   40   50   60   70   80   90   100%
 
     ## [----|----|----|----|----|----|----|----|----|----|
 
     ## **************************************************|
-    ## 21:54:10 Writing NN index file to temp file /tmp/Rtmpe9zGyv/file14134ff9123
-    ## 21:54:10 Searching Annoy index using 1 thread, search_k = 3000
-    ## 21:54:11 Annoy recall = 100%
-    ## 21:54:12 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
-    ## 21:54:12 Initializing from normalized Laplacian + noise (using irlba)
-    ## 21:54:13 Commencing optimization for 500 epochs, with 225762 positive edges
-    ## 21:54:18 Optimization finished
+    ## 14:25:47 Writing NN index file to temp file /tmp/RtmpWB6bbq/file22e175a4f3c
+    ## 14:25:47 Searching Annoy index using 1 thread, search_k = 3000
+    ## 14:25:49 Annoy recall = 100%
+    ## 14:25:49 Commencing smooth kNN distance calibration using 1 thread with target n_neighbors = 30
+    ## 14:25:50 Initializing from normalized Laplacian + noise (using irlba)
+    ## 14:25:50 Commencing optimization for 500 epochs, with 225762 positive edges
+    ## 14:25:56 Optimization finished
 
 Now we can visualize the join dimensionality reduction and clustering
 results in UMAP plot and onto the tissue slides:
@@ -393,8 +393,9 @@ sessionInfo()
     ## other attached packages:
     ## [1] dplyr_1.0.10              patchwork_1.1.2          
     ## [3] ggplot2_3.3.6             stxBrain.SeuratData_0.1.1
-    ## [5] SeuratData_0.2.2          sp_1.5-0                 
-    ## [7] SeuratObject_4.1.2        Seurat_4.2.0             
+    ## [5] pbmcsca.SeuratData_3.0.0  SeuratData_0.2.2         
+    ## [7] sp_1.5-0                  SeuratObject_4.1.2       
+    ## [9] Seurat_4.2.0             
     ## 
     ## loaded via a namespace (and not attached):
     ##   [1] Rtsne_0.16            colorspace_2.0-3      deldir_1.0-6         
@@ -406,32 +407,32 @@ sessionInfo()
     ##  [19] cluster_2.1.3         png_0.1-7             rgeos_0.5-9          
     ##  [22] uwot_0.1.14           shiny_1.7.2           sctransform_0.3.5    
     ##  [25] spatstat.sparse_2.1-1 compiler_4.2.1        httr_1.4.4           
-    ##  [28] Matrix_1.5-1          fastmap_1.1.0         lazyeval_0.2.2       
-    ##  [31] limma_3.52.4          cli_3.4.1             later_1.3.0          
-    ##  [34] htmltools_0.5.3       tools_4.2.1           igraph_1.3.5         
-    ##  [37] gtable_0.3.1          glue_1.6.2            RANN_2.6.1           
-    ##  [40] reshape2_1.4.4        rappdirs_0.3.3        Rcpp_1.0.9           
-    ##  [43] scattermore_0.8       vctrs_0.4.2           nlme_3.1-157         
-    ##  [46] progressr_0.11.0      lmtest_0.9-40         spatstat.random_2.2-0
-    ##  [49] xfun_0.33             stringr_1.4.1         globals_0.16.1       
-    ##  [52] mime_0.12             miniUI_0.1.1.1        lifecycle_1.0.2      
-    ##  [55] irlba_2.3.5.1         goftest_1.2-3         future_1.28.0        
-    ##  [58] MASS_7.3-57           zoo_1.8-11            scales_1.2.1         
-    ##  [61] spatstat.core_2.4-4   promises_1.2.0.1      spatstat.utils_2.3-1 
-    ##  [64] parallel_4.2.1        RColorBrewer_1.1-3    yaml_2.3.5           
-    ##  [67] reticulate_1.26       pbapply_1.5-0         gridExtra_2.3        
-    ##  [70] rpart_4.1.16          stringi_1.7.8         highr_0.9            
-    ##  [73] rlang_1.0.6           pkgconfig_2.0.3       matrixStats_0.62.0   
-    ##  [76] evaluate_0.16         lattice_0.20-45       ROCR_1.0-11          
-    ##  [79] purrr_0.3.4           tensor_1.5            labeling_0.4.2       
-    ##  [82] htmlwidgets_1.5.4     cowplot_1.1.1         tidyselect_1.1.2     
-    ##  [85] parallelly_1.32.1     RcppAnnoy_0.0.19      plyr_1.8.7           
-    ##  [88] magrittr_2.0.3        R6_2.5.1              generics_0.1.3       
-    ##  [91] withr_2.5.0           mgcv_1.8-40           pillar_1.8.1         
-    ##  [94] fitdistrplus_1.1-8    survival_3.3-1        abind_1.4-5          
-    ##  [97] tibble_3.1.8          future.apply_1.9.1    crayon_1.5.2         
-    ## [100] KernSmooth_2.23-20    utf8_1.2.2            spatstat.geom_2.4-0  
-    ## [103] plotly_4.10.0         rmarkdown_2.16        grid_4.2.1           
-    ## [106] data.table_1.14.2     digest_0.6.29         xtable_1.8-4         
-    ## [109] tidyr_1.2.1           httpuv_1.6.6          munsell_0.5.0        
-    ## [112] viridisLite_0.4.1
+    ##  [28] assertthat_0.2.1      Matrix_1.5-0          fastmap_1.1.0        
+    ##  [31] lazyeval_0.2.2        limma_3.52.4          cli_3.4.1            
+    ##  [34] later_1.3.0           htmltools_0.5.3       tools_4.2.1          
+    ##  [37] igraph_1.3.5          gtable_0.3.1          glue_1.6.2           
+    ##  [40] RANN_2.6.1            reshape2_1.4.4        rappdirs_0.3.3       
+    ##  [43] Rcpp_1.0.9            scattermore_0.8       vctrs_0.4.2          
+    ##  [46] nlme_3.1-157          progressr_0.11.0      lmtest_0.9-40        
+    ##  [49] spatstat.random_2.2-0 xfun_0.33             stringr_1.4.1        
+    ##  [52] globals_0.16.1        mime_0.12             miniUI_0.1.1.1       
+    ##  [55] lifecycle_1.0.2       irlba_2.3.5.1         goftest_1.2-3        
+    ##  [58] future_1.28.0         MASS_7.3-57           zoo_1.8-11           
+    ##  [61] scales_1.2.1          spatstat.core_2.4-4   promises_1.2.0.1     
+    ##  [64] spatstat.utils_2.3-1  parallel_4.2.1        RColorBrewer_1.1-3   
+    ##  [67] yaml_2.3.5            reticulate_1.26       pbapply_1.5-0        
+    ##  [70] gridExtra_2.3         rpart_4.1.16          stringi_1.7.8        
+    ##  [73] highr_0.9             rlang_1.0.6           pkgconfig_2.0.3      
+    ##  [76] matrixStats_0.62.0    evaluate_0.16         lattice_0.20-45      
+    ##  [79] ROCR_1.0-11           purrr_0.3.5           tensor_1.5           
+    ##  [82] labeling_0.4.2        htmlwidgets_1.5.4     cowplot_1.1.1        
+    ##  [85] tidyselect_1.1.2      parallelly_1.32.1     RcppAnnoy_0.0.19     
+    ##  [88] plyr_1.8.7            magrittr_2.0.3        R6_2.5.1             
+    ##  [91] generics_0.1.3        DBI_1.1.3             withr_2.5.0          
+    ##  [94] mgcv_1.8-40           pillar_1.8.1          fitdistrplus_1.1-8   
+    ##  [97] survival_3.3-1        abind_1.4-5           tibble_3.1.8         
+    ## [100] future.apply_1.9.1    crayon_1.5.2          KernSmooth_2.23-20   
+    ## [103] utf8_1.2.2            spatstat.geom_2.4-0   plotly_4.10.0        
+    ## [106] rmarkdown_2.16        grid_4.2.1            data.table_1.14.2    
+    ## [109] digest_0.6.29         xtable_1.8-4          tidyr_1.2.1          
+    ## [112] httpuv_1.6.6          munsell_0.5.0         viridisLite_0.4.1
