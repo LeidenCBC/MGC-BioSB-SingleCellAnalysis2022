@@ -39,7 +39,7 @@
 |14:00-14:15 |_break_ | |
 |14:15-15:45 |Practical: [Data integration](session-integration/Data_Integration.md) | TAs (Qirong, Remco) |
 |15:45-16:00 |_break_ | |
-|16:00-17:00 |Practical: [Spatial transcriptomics](session-integration/Spatial_Transcriptomics.md) | TAs (Qirong, Remco) |
+|16:00-17:00 |Practical: [Spatial transcriptomics](session-spatialtranscriptomics/Spatialtranscriptomics.md) | TAs (Qirong, Remco) |
 
 ### Day 4 (Thursday 13.10.2022) - Auditorium (11th floor)
 | When | What | Who |
