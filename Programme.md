@@ -44,7 +44,7 @@
 ### Day 4 (Thursday 13.10.2022) - Auditorium (11th floor)
 | When | What | Who |
 | ------------- | ------------- | ------------- |
-|09:00-10:00 |Lecture: [Trajectory inference](Lectures/Day4_trajectory_inference_Charrout.pdf) | Mohammed Charrout |
+|09:00-10:00 |Lecture: [Trajectory inference](Lectures/Day4_Trajectory_inference_Charrout.pdf) | Mohammed Charrout |
 |10:00-10:15 |_break_ |  |
 |10:15-12:00 |Practical: [Trajectory inference](session-trajectories/session-trajectories.md) | TAs (Mohammed, Gregory) |
 |12:00-13:00 |_lunch_ |  |
