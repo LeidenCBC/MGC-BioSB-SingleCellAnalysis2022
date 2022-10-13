@@ -26,7 +26,7 @@
 |14:00-14:15 |_break_ | |
 |14:15-15:45 |Practical: [Dimensionality reduction](session-dimensionalityreduction/Dimensionality_Reduction.md) | TAs (Mohammed, Gregory) |
 |15:45-16:00 |_break_ | |
-|16:00-17:00 |Lecture: [Spatial Transcriptomics](Lectures/Day3_Spatial_transcriptomics_Alemany.pdf) | Laura Heezen |
+|16:00-17:00 |Lecture: [Spatial Transcriptomics](Lectures/Day3_Spatial_transcriptomics_Heezen.pdf) | Laura Heezen |
 
 ### Day 3 (Wednesday 12.10.2022) - Auditorium (11th floor)
 | When | What | Who |
